@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spirit Tracks Map</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+
+    <style>
+        #map{
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id='map'></div>
+    
+    
+    <script>
+
+    
+    //Generate Map and Coordinate System
+        const map = L.map('map', {
+            crs: L.CRS.Simple
+        });
+
+    //Set Bounds of the Map and Generate it
+    //Make the bounds of the map the pixel dimensions in (y,x), scale up/down if needed
+        const bounds = [[0, 0], [684,919]];
+        //Replace LINK with Image Link
+        const image = L.imageOverlay('https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Spirit%20Tracks%20Map%20Labeled.png?raw=true', bounds).addTo(map);
+        map.fitBounds(bounds);
+
+
+    </script>
+
+    
+    <script>
+
+
+    //Define Marker Icons
+    //Replace LINK with Image Link Each Time
+        var ForceGemIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Spirit%20Tracks%20Force%20Gem.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var HeartIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Spirit%20Tracks%20Heart%20Container.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var RabbitIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Spirit%20Tracks%20Rabbit.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var SkullIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Spirit%20Tracks%20Skull.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var StampIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Spirit%20Tracks%20Stamp%20Station.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var WarpIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Spirit%20Tracks%20Warp%20Gate.png?raw=true',
+        iconSize: [30,25], // size of the icon
+        });
+
+    </script>
+
+   
+    <script>
+
+    //Add Markers to a Group
+    //.bindPopup('TEXT GOES HERE') after yellow ) for Text Popup
+    //[Coordinates of Icon in y,x]
+        var gem1 = L.marker([50, 10], {icon: ForceGemIcon})
+            gem2 = L.marker([50, 10], {icon: ForceGemIcon})
+            var Gems = L.layerGroup([gem1,gem2]);
+
+        var heart1 = L.marker([50, 10], {icon: HeartIcon})
+            heart2 = L.marker([50, 10], {icon: HeartIcon})
+            var Hearts = L.layerGroup([heart1,heart2]);
+
+        var rabbit1 = L.marker([50, 10], {icon: RabbitIcon})
+            rabbit2 = L.marker([50, 10], {icon: RabbitIcon})
+            var Rabbits = L.layerGroup([rabbit1,rabbit2]);
+
+        var skull1 = L.marker([50, 10], {icon: SkullIcon})
+            skull2 = L.marker([50, 10], {icon: SkullIcon})
+            var Skulls = L.layerGroup([skull1,skull2]);
+
+        var stamp1 = L.marker([50, 10], {icon: StampIcon})
+            stamp2 = L.marker([50, 10], {icon: StampIcon})
+            var Stamps = L.layerGroup([stamp1,stamp2]);
+
+        var warp1 = L.marker([50, 10], {icon: WarpIcon})
+            warp2 = L.marker([50, 10], {icon: WarpIcon})
+            var Warps = L.layerGroup([warp1,warp2]);
+    
+    </script>
+
+    
+    <script>
+    //Defines Variable for First Option
+    //"TITLE OF LAYER HERE"
+        var StampLayer = {"Stamp Stations": Stamps};
+            
+    //Adds Layer Option to Map and Defines First Option
+    layerControl = L.control.layers(null,StampLayer).addTo(map);
+
+    layerControl.addOverlay(Gems, 'Force Gems');
+    layerControl.addOverlay(Hearts, 'Heart Containers');
+    layerControl.addOverlay(Rabbits, 'Rabbits');
+    layerControl.addOverlay(Skulls, 'Dungeons');
+    layerControl.addOverlay(Warps, 'Warps');
+    
+    </script>
+    
+</body>
+</html>
