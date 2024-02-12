@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map Template</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+
+    <style>
+        #map{
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id='map'></div>
+
+    <script>
+    
+    
+    //Generate Map and Coordinate System
+        const map = L.map('map', {
+            crs: L.CRS.Simple
+        });
+
+    //Set Bounds of the Map and Generate it
+    //Make the bounds of the map the pixel dimensions in (y,x), scale up/down if needed
+        const bounds = [[0, 0], [250, 250]];
+        //Replace LINK with Image Link
+        const image = L.imageOverlay('LINK?raw=true', bounds).addTo(map);
+        map.fitBounds(bounds);
+
+    </script>
+
+    <script>
+
+    //Define Marker Icons
+    //Replace LINK with Image Link Each Time
+        var BugIcon = L.icon({
+        iconUrl: 'LINK?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+       // Repeat as needed Like Example Below, Replacing LINK with Image Link
+        /*
+        var WarpIcon = L.icon({
+        iconUrl: 'LINK?raw=true',
+        iconSize: [25,25], // size of the icon
+        });        
+        */
+
+    </script>
+
+    <script>
+
+    //Add Markers to a Group
+    //.bindPopup('TEXT GOES HERE') after yellow ) for Text Popup
+    //[Coordinates of Icon in y,x]
+        var Bugs = L.layerGroup([
+            bug1 = L.marker([50, 10], {icon: BugIcon}),
+            bug2 = L.marker([50, 10], {icon: BugIcon})
+            ]);
+
+
+        //Repeat as Needed Again, Like Example Below
+        /*
+        var Warps = L.layerGroup([
+            warp1    = L.marker([100, 10], {icon: WarpIcon}),
+            warp2    = L.marker([0, 57], {icon: WarpIcon})
+            ]);
+        */
+
+    </script>
+
+    
+    <script>
+    
+    
+    //Defines Variable for First Option
+    //"TITLE OF LAYER HERE"
+        var BugLayer = {"Bugs": Bugs};
+            
+    //Adds Layer Option to Map and Defines First Option
+    layerControl = L.control.layers(null,BugLayer).addTo(map);
+
+    //Adds Other Options to Menu
+    //  'TITLE OF LAYER HERE'
+    //   Repeat for all Options
+    /*
+    layerControl.addOverlay(Warps, 'Warps');
+    */
+    
+    </script>
+    
+</body>
+</html>
