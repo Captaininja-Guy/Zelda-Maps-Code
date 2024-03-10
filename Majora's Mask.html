@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Majora's Mask Map</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+
+    <style>
+        #map{
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id='map'></div>
+    
+    
+    <script>
+    
+    
+    //Generate Map and Coordinate System
+        const map = L.map('map', {
+            crs: L.CRS.Simple
+        });
+
+    //Set Bounds of the Map and Generate it
+    //Make the bounds of the map the pixel dimensions in (y,x), scale up/down if needed
+        const bounds = [[0, 0], [579,487]];
+        //Replace LINK with Image Link
+        const image = L.imageOverlay('https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Termina.png?raw=true', bounds).addTo(map);
+        map.fitBounds(bounds);
+
+    </script>
+
+    
+    <script>
+
+    //Define Marker Icons
+    //Replace LINK with Image Link Each Time
+        var WoodfallIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Majoras%20Mask%20Woodfall.png?raw=true',
+        iconSize: [30,30], // size of the icon
+        });
+
+        var SnowheadIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Majoras%20Mask%20Snowhead.png?raw=true',
+        iconSize: [30,30], // size of the icon
+        });
+
+        var GreatBayIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Majoras%20Mask%20Great%20Bay.png?raw=true',
+        iconSize: [30,30], // size of the icon
+        });
+
+        var StoneTowerIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Majoras%20Mask%20Stone%20Tower.png?raw=true',
+        iconSize: [30,30], // size of the icon
+        });
+
+        var OwlIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Majoras%20Mask%20Owl.png?raw=true',
+        iconSize: [40,32], // size of the icon
+        });
+
+        var SaveIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Majoras%20Mask%20Save.png?raw=true',
+        iconSize: [20,20], // size of the icon
+        });
+
+        var SwordIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Majoras%20Mask%20Sword.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var MaskIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Majoras%20Mask%20Mask.png?raw=true',
+        iconSize: [30,25], // size of the icon
+        });
+
+        var GreatFairyIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Oot%20Great%20Fairy.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var HeartIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Oot%20Piece%20of%20Heart.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var SongIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Oot%20Ocarina.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var BottleIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Oot%20Bottle.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+       
+    </script>
+
+   
+    <script>
+
+    //Add Markers to a Group
+    //.bindPopup('TEXT GOES HERE') after yellow ) for Text Popup
+    //[Coordinates of Icon in y,x]
+ 
+        var Swords = L.layerGroup([
+            sword1 = L.marker([422, 273], {icon: SwordIcon}).bindPopup('Razor/Gilded Sword'),
+            sword2 = L.marker([293, 442], {icon: SwordIcon}).bindPopup('Mirror Shield'),
+            sword3 = L.marker([290, 282], {icon: SwordIcon}).bindPopup('Ocarina of Time'),
+            sword4 = L.marker([127, 262], {icon: SwordIcon}).bindPopup('Pictograph Box'),
+            sword5 = L.marker([286, 268], {icon: SwordIcon}).bindPopup('Bomb Bag'),
+            sword6 = L.marker([302, 285], {icon: SwordIcon}).bindPopup('Bombers Notebook'),
+            sword7 = L.marker([95, 276], {icon: SwordIcon}).bindPopup('Bow/Quiver'),
+            sword8 = L.marker([558, 229], {icon: SwordIcon}).bindPopup('Fire Arrows'),
+            sword9 = L.marker([231, 21], {icon: SwordIcon}).bindPopup('Ice Arrows'),
+            sword10 = L.marker([270, 456], {icon: SwordIcon}).bindPopup('Light Arrows'),
+            sword11 = L.marker([468, 371], {icon: SwordIcon}).bindPopup('Powder Keg (First Time)'),
+            sword12 = L.marker([444, 413], {icon: SwordIcon}).bindPopup('Lens of Truth'),
+            sword13 = L.marker([484,87], {icon: SwordIcon}).bindPopup('Hookshot'),
+            sword14 = L.marker([275, 448], {icon: SwordIcon}).bindPopup('Great Fairy Sword'),
+            sword15 = L.marker([272, 320], {icon: SwordIcon}).bindPopup("Moon's Tear"),
+            sword16 = L.marker([286, 278], {icon: SwordIcon}).bindPopup('Town Title Deed'),
+            sword17 = L.marker([129, 265], {icon: SwordIcon}).bindPopup('Swamp Title Deed'),
+            sword18 = L.marker([422, 381], {icon: SwordIcon}).bindPopup('Mountain Title Deed'),
+            sword19 = L.marker([235, 44], {icon: SwordIcon}).bindPopup('Ocean Title Deed'),
+            sword20 = L.marker([292, 282], {icon: SwordIcon}).bindPopup('Wallet Upgrade'),
+            sword21 = L.marker([307,105], {icon: SwordIcon}).bindPopup('Wallet Upgrade'),
+            sword22 = L.marker([303, 284], {icon: SwordIcon}).bindPopup('Bomb Bag Upgrade'),
+            sword23 = L.marker([422, 383], {icon: SwordIcon}).bindPopup('Bomb Bag Upgrade'),
+            sword24 = L.marker([284, 293], {icon: SwordIcon}).bindPopup('Quiver Upgrade'),
+            sword25 = L.marker([172, 315], {icon: SwordIcon}).bindPopup('Quiver Upgrade'),
+            ]);
+
+
+        var Masks = L.layerGroup([
+            mask1 = L.marker([290, 282], {icon: MaskIcon}).bindPopup('Deku Mask'),
+            mask2 = L.marker([459, 278], {icon: MaskIcon}).bindPopup('Goron Mask'),
+            mask3 = L.marker([303, 81], {icon: MaskIcon}).bindPopup('Zora Mask'),
+            mask4 = L.marker([285, 282], {icon: MaskIcon}).bindPopup("Fierce Diety's Mask (On the Moon)"),
+            mask5 = L.marker([302, 275], {icon: MaskIcon}).bindPopup("Great Fairy's Mask"),
+            mask6 = L.marker([302, 293], {icon: MaskIcon}).bindPopup("Kafei's Mask"),
+            mask7 = L.marker([277.5, 270.5], {icon: MaskIcon}).bindPopup('Breman Mask'),
+            mask8 = L.marker([315, 262], {icon: MaskIcon}).bindPopup("Kamaro's Mask"),
+            mask9 = L.marker([303, 282], {icon: MaskIcon}).bindPopup('Blast Mask'),
+            mask10 = L.marker([275, 109], {icon: MaskIcon}).bindPopup('Bunny Hood'),
+            mask11 = L.marker([282.5, 268], {icon: MaskIcon}).bindPopup('Keaton Mask'),
+            mask12 = L.marker([292.5, 271], {icon: MaskIcon}).bindPopup("Postman's Hat"),
+            mask13 = L.marker([99, 247], {icon: MaskIcon}).bindPopup('Mask of Truth'),
+            mask14 = L.marker([29, 243], {icon: MaskIcon}).bindPopup('Mask of Scents'),
+            mask15 = L.marker([425, 258], {icon: MaskIcon}).bindPopup("Don Gero's Mask"),
+            mask16 = L.marker([281, 131], {icon: MaskIcon}).bindPopup("Romani's Mask"),
+            mask17 = L.marker([231, 221], {icon: MaskIcon}).bindPopup("Garo's Mask"),
+            mask18 = L.marker([351, 372], {icon: MaskIcon}).bindPopup("Captain's Hat"),
+            mask19 = L.marker([466, 80], {icon: MaskIcon}).bindPopup('Stone Mask'),
+            mask20 = L.marker([291.5, 293.5], {icon: MaskIcon}).bindPopup("Troupe Leader's Mask"),
+            mask21 = L.marker([282.7, 271], {icon: MaskIcon}).bindPopup('All-Night Mask'),
+            mask22 = L.marker([283, 447.5], {icon: MaskIcon}).bindPopup('Gibdo Mask'),
+            mask23 = L.marker([292, 290], {icon: MaskIcon}).bindPopup("Couple's Mask"),
+            mask24 = L.marker([270, 456], {icon: MaskIcon}).bindPopup("Giant's Mask (In Stone Tower Temple)"),
+            ]);
+
+
+        var Hearts = L.layerGroup([
+
+            Hearts1 = L.layerGroup([
+            heart1 = L.marker([288, 282], {icon: HeartIcon}).bindPopup("1"),
+            heart2 = L.marker([304, 286], {icon: HeartIcon}).bindPopup("2"),
+            heart3 = L.marker([292.5, 269], {icon: HeartIcon}).bindPopup("3"),
+            heart4 = L.marker([252, 273], {icon: HeartIcon}).bindPopup("4"),
+            heart5 = L.marker([316, 263], {icon: HeartIcon}).bindPopup("5"),
+            heart6 = L.marker([299, 277.5], {icon: HeartIcon}).bindPopup("6"),
+            heart7 = L.marker([292.5, 271], {icon: HeartIcon}).bindPopup("7"),
+            heart8 = L.marker([290, 269], {icon: HeartIcon}).bindPopup("8"),
+            heart9 = L.marker([294, 290], {icon: HeartIcon}).bindPopup("9"),
+            heart10 = L.marker([272, 314], {icon: HeartIcon}).bindPopup("10"),
+            heart11 = L.marker([256, 197], {icon: HeartIcon}).bindPopup('11 Also obtainable in Mountain Village or North Clock Town'),
+            heart12 = L.marker([285, 282], {icon: HeartIcon}).bindPopup("12 In any of the mailboxes with postman's hat"),
+            heart13 = L.marker([192, 274], {icon: HeartIcon}).bindPopup("13"),
+            heart14 = L.marker([126, 262], {icon: HeartIcon}).bindPopup("14"),
+            heart15 = L.marker([129, 262], {icon: HeartIcon}).bindPopup("15"),
+            heart16 = L.marker([37, 241], {icon: HeartIcon}).bindPopup("16"),
+            heart17 = L.marker([93, 264], {icon: HeartIcon}).bindPopup("17"),
+            heart18 = L.marker([247, 270], {icon: HeartIcon}).bindPopup("18 Go to the 4 holes in each cardinal direction"),
+            heart19 = L.marker([261, 114], {icon: HeartIcon}).bindPopup("19"),
+            heart20 = L.marker([283.5, 294], {icon: HeartIcon}).bindPopup("20"),
+            heart21 = L.marker([173, 315], {icon: HeartIcon}).bindPopup("21"),
+            heart22 = L.marker([287, 296], {icon: HeartIcon}).bindPopup("22"),
+            heart23 = L.marker([421, 386], {icon: HeartIcon}).bindPopup("23"),
+            heart24 = L.marker([286, 290], {icon: HeartIcon}).bindPopup("24"),
+            heart25 = L.marker([326.5, 381.5], {icon: HeartIcon}).bindPopup("25"),
+            heart26 = L.marker([331, 377], {icon: HeartIcon}).bindPopup("26"),
+            ]),
+
+            Hearts2 = L.layerGroup([
+            heart27 = L.marker([579-288, 237], {icon: HeartIcon}).bindPopup("27"),
+            heart28 = L.marker([579-271, 53], {icon: HeartIcon}).bindPopup("28"),
+            heart29 = L.marker([579-377, 136], {icon: HeartIcon}).bindPopup("29"),
+            heart30 = L.marker([579-147, 87], {icon: HeartIcon}).bindPopup("30"),
+            heart31 = L.marker([579-223, 24], {icon: HeartIcon}).bindPopup("31"),
+            heart32 = L.marker([579-347, 30], {icon: HeartIcon}).bindPopup("32"),
+            heart33 = L.marker([579-347, 35], {icon: HeartIcon}).bindPopup("33"),
+            heart34 = L.marker([579-383, 134], {icon: HeartIcon}).bindPopup("34"),
+            heart35 = L.marker([579-98, 254], {icon: HeartIcon}).bindPopup("35"),
+            heart36 = L.marker([579-201, 106], {icon: HeartIcon}).bindPopup("36"),
+            heart37 = L.marker([579-272, 104], {icon: HeartIcon}).bindPopup("37"),
+            heart38 = L.marker([579-288, 290.5], {icon: HeartIcon}).bindPopup("38"),
+            heart39 = L.marker([579-288, 291.5], {icon: HeartIcon}).bindPopup("39"),
+            heart40 = L.marker([579-322, 424], {icon: HeartIcon}).bindPopup("40"),
+            heart41 = L.marker([579-277, 293], {icon: HeartIcon}).bindPopup("41"),
+            heart42 = L.marker([579-167, 331], {icon: HeartIcon}).bindPopup("42"),
+            heart43 = L.marker([579-159, 263], {icon: HeartIcon}).bindPopup("43"),
+            heart44 = L.marker([579-217, 80], {icon: HeartIcon}).bindPopup("44"),
+            heart45 = L.marker([579-290, 455], {icon: HeartIcon}).bindPopup("45"),
+            heart46 = L.marker([579-358, 445.5], {icon: HeartIcon}).bindPopup("46"),
+            heart47 = L.marker([579-248, 434], {icon: HeartIcon}).bindPopup("47"),
+            heart48 = L.marker([579-287, 282], {icon: HeartIcon}).bindPopup("48"),
+            heart49 = L.marker([579-289, 282], {icon: HeartIcon}).bindPopup("49, 50, 51, 52- On the moon"),
+            ])])
+
+
+        var GreatFairies = L.layerGroup([
+            gfairy1 = L.marker([301, 275], {icon: GreatFairyIcon}),
+            gfairy2 = L.marker([93, 289], {icon: GreatFairyIcon}),
+            gfairy3 = L.marker([560, 234], {icon: GreatFairyIcon}),
+            gfairy4 = L.marker([203, 71], {icon: GreatFairyIcon}),
+            gfairy5 = L.marker([276, 448], {icon: GreatFairyIcon}),
+            ]);
+
+
+        var Dungeons = L.layerGroup([
+            dungeon1 = L.marker([96, 280], {icon: WoodfallIcon}),
+            dungeon2 = L.marker([559, 229], {icon: SnowheadIcon}),
+            dungeon3 = L.marker([231, 22], {icon: GreatBayIcon}),
+            dungeon4 = L.marker([270, 456], {icon: StoneTowerIcon})
+            ]);
+
+
+        var Owls = L.layerGroup([
+            owl1 = L.marker([293, 282], {icon: OwlIcon}),
+            owl2 = L.marker([248, 210], {icon: OwlIcon}),
+            owl3 = L.marker([146, 255], {icon: OwlIcon}),
+            owl4 = L.marker([103, 279], {icon: OwlIcon}),
+            owl5 = L.marker([424, 270], {icon: OwlIcon}),
+            owl6 = L.marker([509, 255], {icon: OwlIcon}),
+            owl7 = L.marker([310, 55], {icon: OwlIcon}),
+            owl8 = L.marker([230, 29], {icon: OwlIcon}),
+            owl9 = L.marker([287, 434], {icon: OwlIcon}),
+            owl10 = L.marker([270, 456], {icon: OwlIcon}).bindPopup('At the top of the tower'),
+            ]);
+
+
+        var Saves = L.layerGroup([
+            save1 = L.marker([79, 267], {icon: SaveIcon}),
+            save2 = L.marker([579-519, 246], {icon: SaveIcon}),
+            save3 = L.marker([231, 22], {icon: SaveIcon}),
+            save4 = L.marker([579-285.5, 442], {icon: SaveIcon}),
+            save5 = L.marker([579-113, 63], {icon: SaveIcon}),
+            save6 = L.marker([579-260, 100], {icon: SaveIcon}),
+            save7 = L.marker([579-152, 374], {icon: SaveIcon}),
+            save8 = L.marker([579-21, 229], {icon: SaveIcon}),
+            save9 = L.marker([579-263, 377], {icon: SaveIcon}),
+            save10 = L.marker([579-288, 382], {icon: SaveIcon}),
+            save11 = L.marker([579-337, 435], {icon: SaveIcon}),
+            save12 = L.marker([579-309, 456], {icon: SaveIcon}).bindPopup('Stone Tower Temple Main Room'),
+            save13 = L.marker([579-295, 282], {icon: SaveIcon}).bindPopup('On the Moon'),
+            ]);
+
+
+        var Songs = L.layerGroup([
+            song1 = L.marker([291, 282.2], {icon: SongIcon}).bindPopup('Song of Time'),
+            song2 = L.marker([289, 282.2], {icon: SongIcon}).bindPopup('Song of Healing'),
+            song3 = L.marker([45, 232], {icon: SongIcon}).bindPopup('Sonata of Awakening'),
+            song4 = L.marker([149, 258], {icon: SongIcon}).bindPopup('Song of Soaring'),
+            song5 = L.marker([95, 276], {icon: SongIcon}).bindPopup('Oath to Order'),
+            song6 = L.marker([428, 375], {icon: SongIcon}).bindPopup('Goron Lulaby Ending'),
+            song7 = L.marker([414, 334], {icon: SongIcon}).bindPopup('Goron Lulaby Begining'),
+            song8 = L.marker([308, 53], {icon: SongIcon}).bindPopup('New Wave Bossa Nova'),
+            song9 = L.marker([240, 432], {icon: SongIcon}).bindPopup('Elegy of Emptiness'),
+            song10 = L.marker([274, 322], {icon: SongIcon}).bindPopup("Scarecrow's Song"),
+            song11 = L.marker([321, 381.5], {icon: SongIcon}).bindPopup('Song of Storms'),
+            song10 = L.marker([284, 269], {icon: SongIcon}).bindPopup("Scarecrow's Song"),
+            ]);
+
+
+        var Bottles = L.layerGroup([
+            bottle1 = L.marker([144, 321], {icon: BottleIcon}),
+            bottle2 = L.marker([126, 262], {icon: BottleIcon}),
+            bottle3 = L.marker([444, 322], {icon: BottleIcon}),
+            bottle4 = L.marker([279, 131], {icon: BottleIcon}),
+            bottle5 = L.marker([195, 134], {icon: BottleIcon}),
+            bottle6 = L.marker([291, 291], {icon: BottleIcon}),
+            bottle7 = L.marker([291.7, 293.5], {icon: BottleIcon}),
+            ]);
+
+    </script>
+
+
+    <script>
+    
+    //Defines Variable for First Option
+    //"TITLE OF LAYER HERE"
+        var DungeonLayer = {"Dungeons": Dungeons};
+            
+    //Adds Layer Option to Map and Defines First Option
+    layerControl = L.control.layers(null,DungeonLayer).addTo(map);
+
+    layerControl.addOverlay(Owls, 'Owl Statues');
+    layerControl.addOverlay(Saves, 'Save Points');
+    layerControl.addOverlay(Swords, 'Equipment');
+    layerControl.addOverlay(Masks, 'Masks');
+    layerControl.addOverlay(GreatFairies, 'Great Fairies');
+    layerControl.addOverlay(Hearts, 'Heart Pieces');
+    layerControl.addOverlay(Songs, 'Songs');
+    layerControl.addOverlay(Bottles, 'Bottles');
+    
+    </script>
+   
+</body>
+</html>
