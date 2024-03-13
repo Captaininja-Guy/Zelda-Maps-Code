@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adventure of Link Map</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+
+    <style>
+        #map{
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id='map'></div>
+    
+    <script>
+    
+    //Generate Map and Coordinate System
+        const map = L.map('map', {
+            crs: L.CRS.Simple
+        });
+
+    //Set Bounds of the Map and Generate it
+    //Make the bounds of the map the pixel dimensions in (y,x), scale up/down if needed
+        const bounds = [[0, 0], [532.25,782]];
+        //Replace LINK with Image Link
+        const image = L.imageOverlay('https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/AOL%20map.png?raw=true', bounds).addTo(map);
+        map.fitBounds(bounds);
+
+    </script>
+
+    
+    <script>
+
+    //Define Marker Icons
+    //Replace LINK with Image Link Each Time
+        var DollIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/AOL%20Doll.png?raw=true',
+        iconSize: [20,30], // size of the icon
+        });
+
+        var FairyIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/AOL%20Fairy.png?raw=true',
+        iconSize: [20,30], // size of the icon
+        });
+
+        var MagicContainIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/AOL%20Magic%20Container.png?raw=true',
+        iconSize: [20,30], // size of the icon
+        });
+
+        var DungeonIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/AoL%20Dungeon.jpg?raw=true',
+        iconSize: [15,15], // size of the icon
+        });
+
+        var HeartIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/AoL%20Heart%20Container.png?raw=true',
+        iconSize: [20,20], // size of the icon
+        });
+      
+        var MagicJarIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/AoL%20Magic%20Jar.png?raw=true',
+        iconSize: [20,30], // size of the icon
+        });
+
+        var PointBagIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/AoL%20Point%20Bag.png?raw=true',
+        iconSize: [20,30], // size of the icon
+        });
+      
+        var TownIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/AoL%20Town.jpg?raw=true',
+        iconSize: [15,15], // size of the icon
+        });
+    </script>
+
+   
+    <script>
+
+    //Add Markers to a Group
+    //.bindPopup('TEXT GOES HERE') after yellow ) for Text Popup
+    //[Coordinates of Icon in y,x]
+        var Dolls = L.layerGroup([
+            doll1 = L.marker([330.25, 66], {icon: DollIcon}),
+            doll2 = L.marker([206.25, 186], {icon: DollIcon}),
+            doll3 = L.marker([338.25, 554], {icon: DollIcon}),
+            doll4 = L.marker([190.25, 466], {icon: DollIcon}),
+            doll5 = L.marker([106.25, 541], {icon: DollIcon}).bindPopup('In Three-Eye Rock Palace'),
+            doll6 = L.marker([223.25, 377], {icon: DollIcon}).bindPopup('In Great Palace'),
+            ]);
+
+        var Fairies = L.layerGroup([
+            fairy1 = L.marker([358.25, 62], {icon: FairyIcon}),
+            fairy2 = L.marker([266.25, 166], {icon: FairyIcon}),
+            fairy3 = L.marker([242.25, 414], {icon: FairyIcon}),
+            ]);
+
+        var MagicContainers = L.layerGroup([
+            magiccontain1 = L.marker([390.25, 654], {icon: MagicContainIcon}),
+            magiccontain2 = L.marker([190.25, 606], {icon: MagicContainIcon}).bindPopup('In Hidden Town of Kasuto'),
+            magiccontain3 = L.marker([74.25, 74], {icon: MagicContainIcon}),
+            magiccontain4 = L.marker([374.25, 98], {icon: MagicContainIcon}),
+            ]);
+
+        var Dungeons = L.layerGroup([
+            dungeon1 = L.marker([486.25, 281], {icon: DungeonIcon}).bindPopup('Parapa Palace'),
+            dungeon2 = L.marker([358.25, 77], {icon: DungeonIcon}).bindPopup('Midoro Palace'),
+            dungeon3 = L.marker([223.25, 261], {icon: DungeonIcon}).bindPopup('Island Palace'),
+            dungeon4 = L.marker([391.25, 729], {icon: DungeonIcon}).bindPopup('Maze Palace'),
+            dungeon5 = L.marker([275.25, 609], {icon: DungeonIcon}).bindPopup('Palace on the Sea'),
+            dungeon6 = L.marker([106.25, 541], {icon: DungeonIcon}).bindPopup('Three-Eye Rock Palace'),
+            dungeon7 = L.marker([223.25, 377], {icon: DungeonIcon}).bindPopup('Great Palace'),
+            ]);
+
+        var Hearts = L.layerGroup([
+            heart1 = L.marker([366.25, 249], {icon: HeartIcon}),
+            heart2 = L.marker([358.25, 282], {icon: HeartIcon}),
+            heart3 = L.marker([118.25, 590], {icon: HeartIcon}),
+            heart4 = L.marker([290.25, 614], {icon: HeartIcon}),
+            ]);
+
+        var MagicJars = L.layerGroup([
+            magicjar1 = L.marker([438.25, 682], {icon: MagicJarIcon}),
+            magicjar2 = L.marker([118.25, 470], {icon: MagicJarIcon}),
+            magicjar3 = L.marker([290.25, 498], {icon: MagicJarIcon}),
+            magicjar4 = L.marker([246.25, 226], {icon: MagicJarIcon}),
+            magicjar5 = L.marker([346.25, 102], {icon: MagicJarIcon}),
+            magicjar6 = L.marker([342.25, 182], {icon: MagicJarIcon}),
+            magicjar7 = L.marker([74.25, 82], {icon: MagicJarIcon}),
+            magicjar8 = L.marker([78.25, 114], {icon: MagicJarIcon}),
+            magicjar9 = L.marker([122.25, 130], {icon: MagicJarIcon}),
+            ]);
+
+        var PointBags = L.layerGroup([
+            ptbag1 = L.marker([446.25, 182], {icon: PointBagIcon}).bindPopup('50'),
+            ptbag2 = L.marker([366.25, 186], {icon: PointBagIcon}).bindPopup('200'),
+            ptbag3 = L.marker([270.25, 114], {icon: PointBagIcon}).bindPopup('100'),
+            ptbag4 = L.marker([282.25, 402], {icon: PointBagIcon}).bindPopup('200'),
+            ptbag5 = L.marker([258.25, 574], {icon: PointBagIcon}).bindPopup('500'),
+            ptbag6 = L.marker([150.25, 578], {icon: PointBagIcon}).bindPopup('500'),
+            ptbag7 = L.marker([150.25, 378], {icon: PointBagIcon}).bindPopup('500'),
+            ptbag8 = L.marker([202.25, 486], {icon: PointBagIcon}).bindPopup('500'),
+            ptbag9 = L.marker([230.25, 462], {icon: PointBagIcon}).bindPopup('500'),
+            ]);
+
+        var Towns = L.layerGroup([
+            twn1 = L.marker([470.25, 42], {icon: TownIcon}).bindPopup('Ruto Town'),
+            twn2 = L.marker([398.25, 218], {icon: TownIcon}).bindPopup('Rauru Town'),
+            twn3 = L.marker([258.25, 66], {icon: TownIcon}).bindPopup('Saria Town'),
+            twn4 = L.marker([250.25, 66], {icon: TownIcon}).bindPopup('Saria Town'),
+            twn5 = L.marker([315.25, 274], {icon: TownIcon}).bindPopup('Mido Town'),
+            twn6 = L.marker([383.25, 374], {icon: TownIcon}).bindPopup('Darunia Town'),
+            twn7 = L.marker([275.25, 454], {icon: TownIcon}).bindPopup('Nabooru Town'),
+            twn8 = L.marker([118.25, 498], {icon: TownIcon}).bindPopup('Deserted Town of Kasuto'),
+            twn9 = L.marker([190.25, 606], {icon: TownIcon}).bindPopup('Hidden Town of Kasuto'),
+            ]);
+
+    </script>
+
+   
+    <script>
+
+    //Defines Variable for First Option
+    //"TITLE OF LAYER HERE"
+        var DollLayer = {"Dolls": Dolls};
+            
+    //Adds Layer Option to Map and Defines First Option
+    layerControl = L.control.layers(null,DollLayer).addTo(map);
+
+    layerControl.addOverlay(Fairies, 'Fairies');
+    layerControl.addOverlay(MagicContainers, 'Magic Containers');
+    layerControl.addOverlay(Dungeons, 'Dungeons');
+    layerControl.addOverlay(Hearts, 'Heart Containers');
+    layerControl.addOverlay(MagicJars, 'Magic Jars');
+    layerControl.addOverlay(PointBags, 'Point Bags');
+    layerControl.addOverlay(Towns, 'Towns');
+
+    </script>
+    
+</body>
+</html>
