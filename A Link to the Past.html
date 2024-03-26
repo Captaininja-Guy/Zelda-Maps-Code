@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Link to the Past Map</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+
+    <style>
+        #map{
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id='map'></div>
+    
+    
+    <script>
+    
+    //Generate Map and Coordinate System
+        const map = L.map('map', {
+            crs: L.CRS.Simple
+        });
+
+    //Set Bounds of the Map and Generate it
+    //Make the bounds of the map the pixel dimensions in (y,x), scale up/down if needed
+        const bounds = [[0, 0], [590,1057]];
+        //Replace LINK with Image Link
+        const image = L.imageOverlay('https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Alttp%20map.png?raw=true', bounds).addTo(map);
+        map.fitBounds(bounds);
+
+    </script>
+
+   
+    <script>
+ 
+    //Define Marker Icons
+    //Replace LINK with Image Link Each Time
+        var BottleIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Alttp%20Bottle.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var HeartIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Alttp%20Heat%20Piece.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var SkullIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Alttp%20Skull.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var SwordIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Alttp%20Sword.png?raw=true',
+        iconSize: [20,30], // size of the icon
+        });
+
+        var WarpIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Alttp%20Warp%20Tile.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var BirdIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Oot%20Ocarina.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+    </script>
+    
+    
+    <script>
+    //Add Markers to a Group
+    //.bindPopup('TEXT GOES HERE') after yellow ) for Text Popup
+    //[Coordinates of Icon in y,x]
+    var Bottles = L.layerGroup([
+            Bottle1 = L.marker([275, 49], {icon: BottleIcon}),
+            Bottle2 = L.marker([221, 82], {icon: BottleIcon}),
+            Bottle3 = L.marker([161, 355], {icon: BottleIcon}),
+            Bottle4 = L.marker([53, 173], {icon: BottleIcon}),
+            ]);
+
+    var Warps = L.layerGroup([
+            Warp1 = L.marker([240, 256], {icon: WarpIcon}),
+            Warp2 = L.marker([465, 289], {icon: WarpIcon}),
+            Warp3 = L.marker([338, 47], {icon: WarpIcon}),
+            Warp4 = L.marker([144, 499], {icon: WarpIcon}),
+            Warp5 = L.marker([117, 233], {icon: WarpIcon}),
+            Warp6 = L.marker([66, 407], {icon: WarpIcon}),
+            Warp7 = L.marker([9, 21], {icon: WarpIcon}),
+            Warp8 = L.marker([395, 395], {icon: WarpIcon}),
+            Warp9 = L.marker([483, 481], {icon: WarpIcon}),
+            ]);
+
+    var Birds = L.layerGroup([
+            Bird1 = L.marker([409, 207], {icon: BirdIcon}).bindPopup('1'),
+            Bird2 = L.marker([335, 409], {icon: BirdIcon}).bindPopup('2'),
+            Bird3 = L.marker([263, 65], {icon: BirdIcon}).bindPopup('3'),
+            Bird4 = L.marker([155, 279], {icon: BirdIcon}).bindPopup('4'),
+            Bird5 = L.marker([148, 486], {icon: BirdIcon}).bindPopup('5'),
+            Bird6 = L.marker([10, 18], {icon: BirdIcon}).bindPopup('6'),
+            Bird7 = L.marker([23, 239], {icon: BirdIcon}).bindPopup('7'),
+            Bird8 = L.marker([17, 479], {icon: BirdIcon}).bindPopup('8'),
+            Bird9 = L.marker([475, 481], {icon: BirdIcon}).bindPopup('9'),
+            ]);
+
+    var Hearts = L.layerGroup([
+            Heart1 = L.marker([294, 12], {icon: HeartIcon}),
+            Heart2 = L.marker([297, 66], {icon: HeartIcon}),
+            Heart3 = L.marker([153, 14], {icon: HeartIcon}),
+            Heart4 = L.marker([445, 97], {icon: HeartIcon}),
+            Heart5 = L.marker([35, 232], {icon: HeartIcon}),
+            Heart6 = L.marker([90, 102], {icon: HeartIcon}),
+            Heart7 = L.marker([362, 200], {icon: HeartIcon}),
+            Heart8 = L.marker([42, 11], {icon: HeartIcon}),
+            Heart9 = L.marker([438, 250], {icon: HeartIcon}),
+            Heart10 = L.marker([467, 260], {icon: HeartIcon}),
+            Heart11 = L.marker([283, 840], {icon: HeartIcon}),
+            Heart12 = L.marker([474, 153], {icon: HeartIcon}),
+            Heart13 = L.marker([447, 489], {icon: HeartIcon}).bindPopup("Inside the Zora's Watterfall loading zone"),
+            Heart14 = L.marker([89, 370], {icon: HeartIcon}),
+            Heart15 = L.marker([157, 573], {icon: HeartIcon}).bindPopup('Anywhere inside the Treasure Field'),
+            Heart16 = L.marker([273, 570], {icon: HeartIcon}),
+            Heart17 = L.marker([273, 292], {icon: HeartIcon}),
+            Heart18 = L.marker([90, 136], {icon: HeartIcon}),
+            Heart19 = L.marker([202, 706], {icon: HeartIcon}),
+            Heart20 = L.marker([422, 726], {icon: HeartIcon}),
+            Heart21 = L.marker([103, 564], {icon: HeartIcon}),
+            Heart22 = L.marker([114, 89], {icon: HeartIcon}),
+            Heart23 = L.marker([5055, 414], {icon: HeartIcon}),
+            Heart24 = L.marker([466, 432], {icon: HeartIcon}),
+            ]);
+        
+    var Skulls = L.layerGroup([
+            Skull1 = L.marker([313, 491], {icon: SkullIcon}).bindPopup('Eastern Palace'),
+            Skull2 = L.marker([105, 38], {icon: SkullIcon}).bindPopup('Desert Palace'),
+            Skull3 = L.marker([496, 286], {icon: SkullIcon}).bindPopup('Tower of Hera'),
+            Skull4 = L.marker([313, 1035], {icon: SkullIcon}).bindPopup('Palace of Darkness'),
+            Skull5 = L.marker([34, 784], {icon: SkullIcon}).bindPopup('Swamp Palace'),
+            Skull6 = L.marker([488, 564], {icon: SkullIcon}).bindPopup('Skull Woods'),
+            Skull7 = L.marker([264, 608], {icon: SkullIcon}).bindPopup("Thieves' Town"),
+            Skull8 = L.marker([72, 952], {icon: SkullIcon}).bindPopup('Ice Palace'),
+            Skull9 = L.marker([101, 582], {icon: SkullIcon}).bindPopup('Misery Mire'),
+            Skull10 = L.marker([471, 1026], {icon: SkullIcon}).bindPopup('Turtle Rock'),
+            Skull11 = L.marker([503, 832], {icon: SkullIcon}).bindPopup("Gannon's Tower"),
+            Skull12 = L.marker([306, 255], {icon: SkullIcon}).bindPopup('Hyrule Castle Tower'),
+            Skull13 = L.marker([263, 828], {icon: SkullIcon}).bindPopup('Palace of the Four Sword'),
+            ]);
+
+    var Swords = L.layerGroup([
+            Sword1 = L.marker([299, 305], {icon: SwordIcon}).bindPopup('Sword and Shield'),
+            Sword2 = L.marker([487, 20], {icon: SwordIcon}).bindPopup('Master Sword'),
+            Sword3 = L.marker([239, 156], {icon: SwordIcon}).bindPopup('Tempered Sword'),
+            Sword4 = L.marker([264, 784], {icon: SwordIcon}).bindPopup('Golden Sword and Silver Arrows'),
+            Sword5 = L.marker([438, 460], {icon: SwordIcon}).bindPopup('Fire Shield and Magic Boomerang'),
+            Sword6 = L.marker([466, 976], {icon: SwordIcon}).bindPopup('Mirror Shield'),
+            Sword7 = L.marker([72, 952], {icon: SwordIcon}).bindPopup('Blue Mail'),
+            Sword8 = L.marker([503, 832], {icon: SwordIcon}).bindPopup('Red Mail'),
+            Sword9 = L.marker([280, 415], {icon: SwordIcon}).bindPopup('Pegasus Boots'),
+            Sword10 = L.marker([105, 38], {icon: SwordIcon}).bindPopup('Power Glove'),
+            Sword11 = L.marker([264, 608], {icon: SwordIcon}).bindPopup("Titan's Mitt"),
+            Sword12 = L.marker([447, 489], {icon: SwordIcon}).bindPopup("Zora's Flippers"),
+            Sword13 = L.marker([496, 286], {icon: SwordIcon}).bindPopup('Moon Pearl'),
+            Sword14 = L.marker([159, 280], {icon: SwordIcon}).bindPopup('Lamp'),
+            Sword15 = L.marker([313, 491], {icon: SwordIcon}).bindPopup('Bow'),
+            Sword16 = L.marker([341, 410], {icon: SwordIcon}).bindPopup('Magic Powder'),
+            Sword17 = L.marker([76, 406], {icon: SwordIcon}).bindPopup('Arrow and Bomb Capacity Upgrade'),
+            Sword18 = L.marker([286, 256], {icon: SwordIcon}).bindPopup('Boomerang'),
+            Sword19 = L.marker([159, 824], {icon: SwordIcon}).bindPopup('Super Bomb'),
+            Sword20 = L.marker([237, 80], {icon: SwordIcon}).bindPopup('Bug Net'),
+            Sword21 = L.marker([469, 61], {icon: SwordIcon}).bindPopup('Mushroom'),
+            Sword22 = L.marker([34, 784], {icon: SwordIcon}).bindPopup('Hookshot'),
+            Sword23 = L.marker([445, 641], {icon: SwordIcon}).bindPopup('Fire Rod'),
+            Sword24 = L.marker([117, 458], {icon: SwordIcon}).bindPopup('Ice Rod'),
+            Sword25 = L.marker([313, 1035], {icon: SwordIcon}).bindPopup('Magic Hammer'),
+            Sword26 = L.marker([173, 147], {icon: SwordIcon}).bindPopup('Flute'),
+            Sword27 = L.marker([175, 80], {icon: SwordIcon}).bindPopup('Book of Mudora'),
+            Sword28 = L.marker([162, 702], {icon: SwordIcon}).bindPopup('Shovel'),
+            Sword29 = L.marker([101, 582], {icon: SwordIcon}).bindPopup('Cane of Somaria'),
+            Sword30 = L.marker([438, 838], {icon: SwordIcon}).bindPopup('Cane of Byrna'),
+            Sword31 = L.marker([360, 308], {icon: SwordIcon}).bindPopup('Magic Cape'),
+            Sword32 = L.marker([390, 228], {icon: SwordIcon}).bindPopup('Magic Mirror'),
+            Sword33 = L.marker([501, 215], {icon: SwordIcon}).bindPopup('Ether Medalion'),
+            Sword34 = L.marker([425, 1009], {icon: SwordIcon}).bindPopup('Quake Medalion'),
+            Sword35 = L.marker([40, 112], {icon: SwordIcon}).bindPopup('Bombos Medalion'),
+            ]);
+
+
+    </script>
+    
+   
+    <script>
+    
+    //Defines Variable for First Option
+    //"TITLE OF LAYER HERE"
+        var BottleLayer = {"Bottles": Bottles};
+            
+    //Adds Layer Option to Map and Defines First Option
+    layerControl = L.control.layers(null,BottleLayer).addTo(map);
+
+   
+    layerControl.addOverlay(Hearts, 'Heart Pieces');
+    layerControl.addOverlay(Skulls, 'Dungeons');
+    layerControl.addOverlay(Swords, 'Equipment');
+    layerControl.addOverlay(Warps, 'Warp Tiles');
+    layerControl.addOverlay(Birds, 'Bird Warp Points');
+    
+    
+    </script>
+    
+</body>
+</html>
