@@ -239,10 +239,10 @@
 
 
         var Dungeons = L.layerGroup([
-            dungeon1 = L.marker([96, 280], {icon: WoodfallIcon}),
-            dungeon2 = L.marker([559, 229], {icon: SnowheadIcon}),
-            dungeon3 = L.marker([231, 22], {icon: GreatBayIcon}),
-            dungeon4 = L.marker([270, 456], {icon: StoneTowerIcon})
+            dungeon1 = L.marker([96, 280], {icon: WoodfallIcon}).bindPopup('Woodfall Temple'),
+            dungeon2 = L.marker([559, 229], {icon: SnowheadIcon}).bindPopup('Showhead Temple'),
+            dungeon3 = L.marker([231, 22], {icon: GreatBayIcon}).bindPopup('Great Bay Temple'),
+            dungeon4 = L.marker([270, 456], {icon: StoneTowerIcon}).bindPopup('Stone Tower Temple'),
             ]);
 
 
