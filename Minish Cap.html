@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minish Cap Map</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+
+    <style>
+        #map{
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id='map'></div>
+    
+    
+    <script>
+    
+    
+    //Generate Map and Coordinate System
+        const map = L.map('map', {
+            crs: L.CRS.Simple
+        });
+
+    //Set Bounds of the Map and Generate it
+    //Make the bounds of the map the pixel dimensions in (y,x), scale up/down if needed
+        const bounds = [[0, 0], [792,1248]];
+        //Replace LINK with Image Link
+        const image = L.imageOverlay('https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Minish%20Cap%20map.png?raw=true', bounds).addTo(map);
+        map.fitBounds(bounds);
+
+    </script>
+
+   
+    <script>
+ 
+
+
+    //Define Marker Icons
+    //Replace LINK with Image Link Each Time
+        var BottleIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Minish%20Cap%20Bottle.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var ButterflyIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Minish%20Cap%20Butterfly.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var GoldMonsterIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Minish%20Cap%20Golden%20Monster.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var HeartIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Minish%20Cap%20Heart%20Piece.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var KinstoneIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Minish%20Cap%20Kinstone.png?raw=true',
+        iconSize: [20,30], // size of the icon
+        });
+
+        var PortalIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Minish%20Cap%20Portal.png?raw=true',
+        iconSize: [25,20], // size of the icon
+        });
+
+        var SwordSkillIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Minish%20Cap%20Sword%20Skill.png?raw=true',
+        iconSize: [20,30], // size of the icon
+        });
+
+        var SwordIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Minish%20Cap%20Sword.png?raw=true',
+        iconSize: [45,60], // size of the icon
+        });
+
+        var TingleIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Minish%20Cap%20Tingle.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var WindIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Minish%20Cap%20Wind%20Crest.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var SkullIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Minish%20Cap%20skull.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+    </script>
+
+    
+    <script>
+
+    //Add Markers to a Group
+    //.bindPopup('TEXT GOES HERE') after yellow ) for Text Popup
+    //[Coordinates of Icon in y,x]
+        var Bottles = L.layerGroup([
+            bottle1 = L.marker([334, 322], {icon: BottleIcon}),
+            bottle2 = L.marker([278, 657], {icon: BottleIcon}).bindPopup('Complete Goron Sidequest'),
+            bottle3 = L.marker([158, 674], {icon: BottleIcon}).bindPopup("After fusing Kinstones with Link's Grandfather"),
+            bottle4 = L.marker([478, 876], {icon: BottleIcon}).bindPopup('Start from the House to the Left of the shop in Hyrule Town and Cross to the shop in Minish Size, the shop keeper will ask you to feed his dog with the bottle at this location'),
+            ]);
+
+            
+        var Butterflies = L.layerGroup([
+            butterfly1 = L.marker([691, 266], {icon: ButterflyIcon}),
+            butterfly2 = L.marker([243, 106], {icon: ButterflyIcon}),
+            butterfly3 = L.marker([98, 10], {icon: ButterflyIcon}),
+            ]);
+
+
+        var GoldMonsters = L.layerGroup([
+            monster1 = L.marker([623, 137], {icon: GoldMonsterIcon}),
+            monster2 = L.marker([522, 145], {icon: GoldMonsterIcon}),
+            monster3 = L.marker([330, 149], {icon: GoldMonsterIcon}),
+            monster4 = L.marker([21, 170], {icon: GoldMonsterIcon}),
+            monster5 = L.marker([73, 323], {icon: GoldMonsterIcon}),
+            monster6 = L.marker([151, 661], {icon: GoldMonsterIcon}),
+            monster7 = L.marker([227, 829], {icon: GoldMonsterIcon}),
+            monster8 = L.marker([684, 603], {icon: GoldMonsterIcon}),
+            monster9 = L.marker([709, 693], {icon: GoldMonsterIcon}),
+            ]);
+
+
+        var Hearts = L.layerGroup([
+
+            Hearts1 = L.layerGroup([
+            heart1 = L.marker([786, 38], {icon: HeartIcon}),
+            heart2 = L.marker([715, 14], {icon: HeartIcon}),
+            heart3 = L.marker([655, 226], {icon: HeartIcon}),
+            heart4 = L.marker([567, 42], {icon: HeartIcon}),
+            heart5 = L.marker([519, 14], {icon: HeartIcon}),
+            heart6 = L.marker([712, 274], {icon: HeartIcon}),
+            heart7 = L.marker([554, 442], {icon: HeartIcon}),
+            heart8 = L.marker([727, 566], {icon: HeartIcon}),
+            heart9 = L.marker([650, 606], {icon: HeartIcon}),
+            heart10 = L.marker([735, 638], {icon: HeartIcon}),
+            heart11 = L.marker([249, 468], {icon: HeartIcon}),
+            heart12 = L.marker([313, 466], {icon: HeartIcon}),
+            heart13 = L.marker([341, 498], {icon: HeartIcon}),
+            heart14 = L.marker([390, 602], {icon: HeartIcon}),
+            heart15 = L.marker([319, 607], {icon: HeartIcon}),
+            heart16 = L.marker([193, 585], {icon: HeartIcon}),
+            heart17 = L.marker([359, 242], {icon: HeartIcon}),
+            heart18 = L.marker([191, 14], {icon: HeartIcon}),
+            heart19 = L.marker([182, 238], {icon: HeartIcon}),
+            heart20 = L.marker([131, 292], {icon: HeartIcon}),
+            heart21 = L.marker([37, 74], {icon: HeartIcon}),
+            heart22 = L.marker([117, 466], {icon: HeartIcon}),
+            ]),
+            
+            Hearts2 = L.layerGroup([
+            heart23 = L.marker([35, 604], {icon: HeartIcon}),
+            heart24 = L.marker([106, 642], {icon: HeartIcon}),
+            heart25 = L.marker([118, 761], {icon: HeartIcon}),
+            heart26 = L.marker([175, 794], {icon: HeartIcon}),
+            heart27 = L.marker([79, 846], {icon: HeartIcon}),
+            heart28 = L.marker([41, 869], {icon: HeartIcon}),
+            heart29 = L.marker([294, 910], {icon: HeartIcon}),
+            heart30 = L.marker([320, 868], {icon: HeartIcon}),
+            heart31 = L.marker([265, 468], {icon: HeartIcon}),
+            heart32 = L.marker([404, 744], {icon: HeartIcon}),
+            heart33 = L.marker([432, 936], {icon: HeartIcon}),
+            heart34 = L.marker([471, 926], {icon: HeartIcon}),
+            heart35 = L.marker([475, 862], {icon: HeartIcon}),
+            heart36 = L.marker([463, 758], {icon: HeartIcon}),
+            heart37 = L.marker([506, 726], {icon: HeartIcon}),
+            heart38 = L.marker([593, 662], {icon: HeartIcon}),
+            heart39 = L.marker([587, 682], {icon: HeartIcon}),
+            heart40 = L.marker([101, 858], {icon: HeartIcon}).bindPopup('x2'),
+            heart41 = L.marker([707, 122], {icon: HeartIcon}),
+            heart42 = L.marker([126, 222], {icon: HeartIcon}),
+            heart43 = L.marker([659, 866], {icon: HeartIcon}),
+            heart44 = L.marker([386, 926], {icon: HeartIcon}).bindPopup('Heart Container'),
+            ]),
+            ]);
+
+
+        var Kinstones = L.layerGroup([
+            
+            Kinstones1 = L.layerGroup([
+            kinstone1 = L.marker([792-77, 14], {icon: KinstoneIcon}).bindPopup('x2, Blue 1 OR 2, with mysterious wall to advance goron sidequest'),
+            kinstone2 = L.marker([792-130, 153], {icon: KinstoneIcon}).bindPopup('Red 2, with Melari, magic bean in Mt. Crenel for piece of heart and 160 rupees'),
+            kinstone3 = L.marker([792-135, 153], {icon: KinstoneIcon}).bindPopup("x4, Green 1, 1, 2, 3, minish in Melari's mine, treasure chest in west of minish woods, northeast of Mt. Crenel, and east of Mt. Crenel base, and Golden Tektite in south of Mt. Crenel"),
+            kinstone4 = L.marker([792-137, 226], {icon: KinstoneIcon}).bindPopup('Red 3, with blade brother inside, path opens in Castor wilds waterfall for meeting another blade brother'),
+            kinstone5 = L.marker([792-323, 86], {icon: KinstoneIcon}).bindPopup('Green 3, minish in hole, treasure chest in Mt. Crenel base for 200 rupees'),
+            kinstone6 = L.marker([792-149, 356], {icon: KinstoneIcon}).bindPopup('x2, Blue 1 and Green 1, both with Dampe, a grave opens in the graveyard with pink Ghini and 100 shells inside, a minish hole opens in the wind ruins for a kinstone piece'),
+            kinstone7 = L.marker([792-115, 286], {icon: KinstoneIcon}).bindPopup('x2, Blue 1 and 2, with ghost, more money available at minigame in hyrule town, then makes his brother leave a minish sized back entrance to hen house in hyrule town'),
+            kinstone8 = L.marker([792-80, 350], {icon: KinstoneIcon}).bindPopup('x2, Green 1 both times, with Pink Ghini in grave, path across river in hyrule town for 200 shells and pile of wood removed in western woods for 100 shells respectively'),
+            kinstone9 = L.marker([792-57, 495], {icon: KinstoneIcon}).bindPopup('Green 3, King of Hyrule OR Crenel Hermit, Little hole in South of Minish woods for Kinstone Piece'),
+            kinstone10 = L.marker([792-57, 501], {icon: KinstoneIcon}).bindPopup('Green 1, King of Hyrule, in Hyrule Castle OR Potho in Hyrule Castle, Treasure chest on the small path to the Minish Village in the Minish Woods for 200 rupees'),
+            kinstone11 = L.marker([792-65, 606], {icon: KinstoneIcon}).bindPopup('Green 3, with minish in hole, pile of wood removed in west of western woods for 200 rupees'),
+            kinstone12 = L.marker([792-141, 606], {icon: KinstoneIcon}).bindPopup('Red 1, with blade brother inside hole, path in the middle of veil falls for another blade brother'),
+            kinstone13 = L.marker([792-134, 872], {icon: KinstoneIcon}).bindPopup('x2, Green 1, 3, with Siroc (grandma in house), treasure chest in northwest and northeast of royal valley both for kinstone pieces'),
+            kinstone14 = L.marker([792-134, 865], {icon: KinstoneIcon}).bindPopup('x2, Green 3 both times, with Flurris, golden snake in the north of castor wilds, pile of wood in the north of western woods removed for 300 rupees'),
+            kinstone15 = L.marker([792-134, 858], {icon: KinstoneIcon}).bindPopup('Green 2, with Caprice, treasure chest in the middle of veil falls for kinstone piece'),
+            kinstone16 = L.marker([792-314, 876], {icon: KinstoneIcon}).bindPopup('Green 2, with dog inside, chest on small plank at lake hylia for kinstone piece'),
+            kinstone17 = L.marker([792-321, 926], {icon: KinstoneIcon}).bindPopup('Blue 1 OR 2, with mysterious wall, advances Goron sidequest'),
+            kinstone18 = L.marker([792-363, 886], {icon: KinstoneIcon}).bindPopup('x2, Green 2 and 3, with Tingle brother, advences the Tingle sidequest, treasure chest on a small path in the middle of Mt. Crenel for 200 shells'),
+            kinstone19 = L.marker([792-365, 986], {icon: KinstoneIcon}).bindPopup('Blue 2, minish inside hole, magic bean at lake hylia for piece of heart, 200 shells and 200 rupees'),
+            kinstone20 = L.marker([792-420, 1122], {icon: KinstoneIcon}).bindPopup('Red 2, with Gale, path in waterfall in veil falls for piece of heart'),
+            kinstone21 = L.marker([792-420, 1113], {icon: KinstoneIcon}).bindPopup('Green 3, with Hailey, golden tektite in veil falls'),
+            kinstone22 = L.marker([792-429, 841], {icon: KinstoneIcon}).bindPopup('Red 3, with Minish in the hole, tree opens in the middle of western woods for piece of heart'),
+            kinstone23 = L.marker([792-473, 868], {icon: KinstoneIcon}).bindPopup('Red 2, with blade brother inside tree, path in waterfall in north hyrule field for another blade brother'),
+            kinstone24 = L.marker([792-602, 870], {icon: KinstoneIcon}).bindPopup('Blue 1 OR 2, with mysterious wall, advances Goron sidequest'),
+            kinstone25 = L.marker([792-653, 876], {icon: KinstoneIcon}).bindPopup('x2, Green 3 then 2, after opened, with business scrub inside, golden octorok in western woods, then a new minish hole in northwest of castor winds for kinstone piece'),
+            kinstone26 = L.marker([792-739, 822], {icon: KinstoneIcon}).bindPopup('Red 3, with Belari, treasure chest in wind ruins for bigger bomb bag'),
+            ]),
+
+            Kinstones2 = L.layerGroup([
+            kinstone27 = L.marker([792-757, 855], {icon: KinstoneIcon}).bindPopup("Green 3, Minish, inside an upside-down blue pot in the Minish Village OR Zill, child near Simon's Simulations in Hyrule Town, water lily in castor wilds for a kinstone piece"),
+            kinstone28 = L.marker([792-751, 861], {icon: KinstoneIcon}).bindPopup('Red 1, with Gentari (minish elder), remote bombs are availible from Belari'),
+            kinstone29 = L.marker([792-757, 864], {icon: KinstoneIcon}).bindPopup('x2, Red 1, 3, Minish in village, land in front of cave in veil falls for piece of heart, small hole near wind crest in lake hylia for heart container'),
+            kinstone30 = L.marker([792-751, 638], {icon: KinstoneIcon}).bindPopup('Blue 1, with Minish inside house, magic bean in eastern hills for piece of heart, 200 shells and 200 rupees'),
+            kinstone31 = L.marker([792-687, 610], {icon: KinstoneIcon}).bindPopup('x2, Blue 1 OR Green 2, Red 3, with Tingle, Tingle sidequest advanced, golden Tektite in the middle of Mt. Crenel'),
+            kinstone32 = L.marker([792-717, 535], {icon: KinstoneIcon}).bindPopup('x2, Red 2 and Green 2, both with Grandpa, treasure chest in eastern hills for a bottle, treasure chest in north of Trilby highlands for kinstone piec717'),
+            kinstone33 = L.marker([792-735, 390], {icon: KinstoneIcon}).bindPopup('Red 2, with minish in house, Syrup makes red potion'),
+            kinstone34 = L.marker([792-751, 297], {icon: KinstoneIcon}).bindPopup('Blue 2, minish in house, magic bean in western woods for 320 rupees and kinstone piece'),
+            kinstone35 = L.marker([792-598, 585], {icon: KinstoneIcon}).bindPopup("Green 2, Anton, man in front of Hyrule Town's bakery OR Anju, the chicken girl in the southeast of Hyrule Town OR Brocco, vegetables seller in Hyrule Town OR clients of Hyrule Town's cafe OR Percy the Poet, in front of his house in the Western Wood, Golden Octorok in north of Minish woods"),
+            kinstone36 = L.marker([792-717, 288], {icon: KinstoneIcon}).bindPopup('Red 2, Percy the Poet, in the Western Wood, OR Malon, the farmer girl, in Hyrule Town, OR young boy in the Happy Hearth Inn, underground path in east part of hyrule castle garden for piece of heart'),
+            kinstone37 = L.marker([792-758, 17], {icon: KinstoneIcon}).bindPopup('Red 1, with Minish inside the hole, magic bean in wind ruins for quiver upgrade'),
+            kinstone38 = L.marker([792-434, 146], {icon: KinstoneIcon}).bindPopup('Blue 2, business scrub inside cave, tree opens in minish woods with another business scrub inside'),
+            kinstone39 = L.marker([792-525, 268], {icon: KinstoneIcon}).bindPopup("Red 1, with Percy in the tree, wood blocking Percy's house in western woods gets removed"),
+            kinstone40 = L.marker([792-320, 262], {icon: KinstoneIcon}).bindPopup('Green 1, minish in house, underground passage in Trilby highlands after pond dries for 75 rupees'),
+            kinstone41 = L.marker([792-358, 274], {icon: KinstoneIcon}).bindPopup('Blue 1 OR 2, with mysterious wall to advances Goron sidequest'),
+            kinstone42 = L.marker([792-278, 614], {icon: KinstoneIcon}).bindPopup('Green 2, with minish in hole, treasure chest in south of wind ruins for 200 shells'),
+            kinstone43 = L.marker([792-457, 722], {icon: KinstoneIcon}).bindPopup('Green 1, With Talon OR old man in front of library, Treasure Chest in North Hyrule Field for 200 Shells'),
+            kinstone44 = L.marker([792-512, 658], {icon: KinstoneIcon}).bindPopup('Red 3, goron in cave, biggoron wakes up making mirror shield available in the post-game'),
+            kinstone45 = L.marker([792-515, 658], {icon: KinstoneIcon}).bindPopup('Blue 1, with Goron inside cave, a Goron comes to hyrule town and starts selling kinstones'),
+            kinstone46 = L.marker([792-586, 638], {icon: KinstoneIcon}).bindPopup('Blue 2, with mysterious wall, advances Goron sidequest'),
+            kinstone47 = L.marker([792-595, 670], {icon: KinstoneIcon}).bindPopup('Blue 1 OR 2, Eenie, starts the Goron sidequest'),
+            kinstone48 = L.marker([792-610, 649], {icon: KinstoneIcon}).bindPopup('Green 3, Meenie, Treasure chest on Mt. Crenel wall for kinstone piece'),
+            kinstone49 = L.marker([792-592, 443], {icon: KinstoneIcon}).bindPopup('Green 3, Crenel Hermit (after the Cave of Flames) OR Chick on the rooftop, treasure chest in north of Lon Lon ranch for 200 rupees'),
+            kinstone50 = L.marker([792-584, 478], {icon: KinstoneIcon}).bindPopup('Blue 1, Hurdy-Gurdy Man, Tree opens in South Hyrule Field for Heart Piece'),
+            kinstone51 = L.marker([792-567, 558], {icon: KinstoneIcon}).bindPopup('Blue 1, with Rolf (dog) or old lady in the middle of town after Cave of Flames, tree in north Hyrule Field for Fairy Fountain'),
+            ]),
+            
+            Kinstones3 = L.layerGroup([
+            kinstone52 = L.marker([792-418, 403], {icon: KinstoneIcon}).bindPopup('Red 3, with Bremor (worker next to post office) after starting the sidequest with Din, Nayru and Farore, another house is available for Din, Nayru or Farore'),
+            kinstone53 = L.marker([792-397, 450], {icon: KinstoneIcon}).bindPopup('Green 2, with Libari (old minish in library), golden octorok in wind ruins'),
+            kinstone54 = L.marker([792-417, 550], {icon: KinstoneIcon}).bindPopup('Green 2, with purple haired teacher, treasure chest in the middle of Trilby highlands for kinstone piece'),
+            kinstone55 = L.marker([792-428, 506], {icon: KinstoneIcon}).bindPopup("Blue 2, with Postman running around Hyrule Town, Swordsman's Newsletter is now sold"),
+            kinstone56 = L.marker([792-439, 478], {icon: KinstoneIcon}).bindPopup('Green 1, with Anju (Chicken girl) OR Malon after Lon Lon Ranch Key, treasure chest in mid-east of Minish woods for a kinstone piece'),
+            kinstone57 = L.marker([792-469, 410], {icon: KinstoneIcon}).bindPopup('Red 3, Traveler inside house, warp in south hyrule field for 3 kinstone pieces and the light arrows if BEFORE wind element'),
+            kinstone58 = L.marker([792-555, 408], {icon: KinstoneIcon}).bindPopup('Green 1, Mutoh, leader of the workers inside a house in the southwest of Hyrule Town OR Romio, inside a house in the southeast of Hyrule Town, underground path in west of Hyurule castle garden with fairy fountain'),
+            kinstone59 = L.marker([792-558, 408], {icon: KinstoneIcon}).bindPopup('Green 3, with Mack (inside house) OR June (women in the south of town), treasure chest in northwest Minish woods for kinstone piece'),
+            kinstone60 = L.marker([792-486, 498], {icon: KinstoneIcon}).bindPopup("Green 2, Lolly (child in various places around town) OR Business Scrub in the west of Mt. Crenel's Base, Treasure chest in small path in Lon Lon Ranch for Kinstone piece"),
+            kinstone61 = L.marker([792-447, 521], {icon: KinstoneIcon}).bindPopup('Green 1, with Zill (in various places around town) OR a forest Minish in the a house in the west of Hyrule Town, lilypad in southwest of castor wilds for kinstone'),
+            kinstone62 = L.marker([792-457, 550], {icon: KinstoneIcon}).bindPopup('Red 1, with Mayor Hagen, Opens underground passage at Lon Lon Ranch for Wallet Upgrade'),
+            kinstone63 = L.marker([792-503, 488], {icon: KinstoneIcon}).bindPopup('Green 2, Minister Potho, inside Hyrule Castle OR Sheila, young girl walking in the north of Hyrule Town OR Brocco, vegetables seller in Hyrule Town OR clients of the cafe OR Satchel inside the Happy Hearth Inn, Golden Rope in Eastern Hills'),
+            kinstone64 = L.marker([792-523, 488], {icon: KinstoneIcon}).bindPopup('Green 1, Pina, fruits seller in Hyrule Town OR Keeley, woman in the east of Hyrule Town, treasure chest in playground for treasure chest'),
+            kinstone65 = L.marker([792-527, 469], {icon: KinstoneIcon}).bindPopup("Green 2, Zill, child near Hyrule Town's Simon's Simulations (or various places around town) OR Minish inside the red house in the west of minish village, water lily in Castor wilds for kinstone piece"),
+            kinstone66 = L.marker([792-489, 589], {icon: KinstoneIcon}).bindPopup('Red 1, with Farore, starts the Din, Nayru, and Farore sidequest'),
+            kinstone67 = L.marker([792-481, 589], {icon: KinstoneIcon}).bindPopup('x3, Red 3, 1, 2, with Farore, Din and Nayru respectively in the inn or their houses if the quest has been done, joy butterfly in castor wilds, wind ruins and royal valley respectively, and when caught, increase digging speed, shooting speed, and swimming speed respectively'),
+            kinstone68 = L.marker([792-518, 593], {icon: KinstoneIcon}).bindPopup('Blue 2, with Candy (little girl in front of the bakery or inside the Happy Hearth Inn), access to cave in Tribly Highlands for kinstone piece and fairy fountain'),
+            kinstone69 = L.marker([792-513, 606], {icon: KinstoneIcon}).bindPopup("Green 2, Lolly (child inside Hyrule Town's Happy Hearth Inn OR inside Hyrule Town's bakery), underground in the northwest of south hyrule field for 75 rupees"),
+            kinstone70 = L.marker([792-568, 582], {icon: KinstoneIcon}).bindPopup('Green 3, with Scratcher (cat) OR Doyle (worker in the west of town), treasure chest in Minish Woods for Kinstone Piece'),
+            kinstone71 = L.marker([792-571, 582], {icon: KinstoneIcon}).bindPopup('Green 1, with Julietta (girl), golden snake in Hyrule Castle Garden'),
+            kinstone72 = L.marker([792-563, 471], {icon: KinstoneIcon}).bindPopup('Green 3, with Bag seller OR old man in 2nd floor of Library, treasure chest in the west of Minish Woods for 200 Rupees, '),
+            kinstone73 = L.marker([792-563, 477], {icon: KinstoneIcon}).bindPopup('Green 2, with Baris, Treasure chest in east of south Hyrule field for 200 shells'),
+            kinstone74 = L.marker([792-566, 474], {icon: KinstoneIcon}).bindPopup('Green 1, with mama in cafe, land in front of cave in lake hylia for piece of heart, 5 kinstone pieces, 100 shells, and 50 rupees'),
+            kinstone75 = L.marker([792-364, 670], {icon: KinstoneIcon}).bindPopup('Green 3, with Tingle brother, advances Tingle sidequest'),
+            kinstone76 = L.marker([792-327, 298], {icon: KinstoneIcon}).bindPopup('Green 3, with Tingle brother, advances Tingle sidequest'),
+            ]),
+            ]);
+
+
+        var Portals = L.layerGroup([
+            portal1 = L.marker([227, 474], {icon: PortalIcon}),
+            portal2 = L.marker([227, 522], {icon: PortalIcon}),
+            portal3 = L.marker([282, 466], {icon: PortalIcon}),
+            portal4 = L.marker([235, 408], {icon: PortalIcon}),
+            portal5 = L.marker([223, 581], {icon: PortalIcon}),
+            portal6 = L.marker([397, 463], {icon: PortalIcon}),
+            portal7 = L.marker([249, 394], {icon: PortalIcon}),
+            portal8 = L.marker([375, 549], {icon: PortalIcon}),
+            portal9 = L.marker([439, 190], {icon: PortalIcon}),
+            portal10 = L.marker([444, 69], {icon: PortalIcon}),
+            portal11 = L.marker([664, 174], {icon: PortalIcon}),
+            portal12 = L.marker([671, 109], {icon: PortalIcon}),
+            portal13 = L.marker([783, 161], {icon: PortalIcon}),
+            portal14 = L.marker([783, 226], {icon: PortalIcon}),
+            portal15 = L.marker([326, 37], {icon: PortalIcon}),
+            portal16 = L.marker([13, 13], {icon: PortalIcon}),
+            portal17 = L.marker([118, 137], {icon: PortalIcon}),
+            portal18 = L.marker([57, 162], {icon: PortalIcon}),
+            portal19 = L.marker([21, 282], {icon: PortalIcon}),
+            portal20 = L.marker([38, 393], {icon: PortalIcon}),
+            portal21 = L.marker([22, 642], {icon: PortalIcon}),
+            portal22 = L.marker([54, 817], {icon: PortalIcon}),
+            portal23 = L.marker([17, 973], {icon: PortalIcon}),
+            portal24 = L.marker([310, 974], {icon: PortalIcon}),
+            portal25 = L.marker([369, 849], {icon: PortalIcon}),
+            portal26 = L.marker([358, 709], {icon: PortalIcon}),
+            portal27 = L.marker([401, 702], {icon: PortalIcon}),
+            portal28 = L.marker([482, 693], {icon: PortalIcon}),
+            portal29 = L.marker([481, 573], {icon: PortalIcon}),
+            portal30 = L.marker([685, 582], {icon: PortalIcon}),
+            portal31 = L.marker([394, 877], {icon: PortalIcon}),
+            ]);
+
+
+        var SwordSkills = L.layerGroup([
+            swordskill1 = L.marker([655, 225], {icon: SwordSkillIcon}).bindPopup('Roll Attack'),
+            swordskill2 = L.marker([650, 606], {icon: SwordSkillIcon}).bindPopup('Sword Beam'),
+            swordskill3 = L.marker([535, 686], {icon: SwordSkillIcon}).bindPopup('Faster Split Gauge'),
+            swordskill4 = L.marker([491, 421], {icon: SwordSkillIcon}).bindPopup('Longer Great Spin Attack'),
+            swordskill5 = L.marker([186, 449], {icon: SwordSkillIcon}).bindPopup('Spinattack, Rock Breaker, Dash Attack, Down Thrust'),
+            swordskill6 = L.marker([360, 230], {icon: SwordSkillIcon}).bindPopup('Faster Spin Attack'),
+            swordskill7 = L.marker([192, 13], {icon: SwordSkillIcon}).bindPopup('Great Spin Attack'),
+            swordskill8 = L.marker([319, 868], {icon: SwordSkillIcon}).bindPopup('Peril Beam'),
+            ]);
+
+
+        var Swords = L.layerGroup([
+            sword1 = L.marker([615, 81], {icon: SwordIcon}).bindPopup('Bomb Bag Upgrade'),
+            sword2 = L.marker([658, 153], {icon: SwordIcon}).bindPopup('White Sword'),
+            sword3 = L.marker([619, 218], {icon: SwordIcon}).bindPopup('Grip Ring'),
+            sword4 = L.marker([575, 353], {icon: SwordIcon}).bindPopup('Quiver Upgrade'),
+            sword5 = L.marker([735, 498], {icon: SwordIcon}).bindPopup("Smith's Sword"),
+            sword6 = L.marker([759, 703], {icon: SwordIcon}).bindPopup('Mirror Shield'),
+            sword7 = L.marker([362, 749], {icon: SwordIcon}).bindPopup('Wallet Upgrade'),
+            sword8 = L.marker([235, 772], {icon: SwordIcon}).bindPopup('Wallet Upgrade'),
+            sword9 = L.marker([261, 498], {icon: SwordIcon}).bindPopup('Small Shield'),
+            sword10 = L.marker([227, 522], {icon: SwordIcon}).bindPopup('Bomerang, Quiver Upgrade, Bomb Bag Upgrade, Wallet Upgrade'),
+            sword11 = L.marker([314, 465], {icon: SwordIcon}).bindPopup('Power Bracelets'),
+            sword12 = L.marker([394, 450], {icon: SwordIcon}).bindPopup('Flippers'),
+            sword13 = L.marker([91, 241], {icon: SwordIcon}).bindPopup('Bomb Bag Upgrade'),
+            sword14 = L.marker([118, 78], {icon: SwordIcon}).bindPopup('Quiver Upgrade'),
+            sword15 = L.marker([530, 498], {icon: SwordIcon}).bindPopup('Magic Boomerang'),
+            sword16 = L.marker([282, 467], {icon: SwordIcon}).bindPopup('Pegasus Boots')
+            ]);
+
+
+        var Tingles = L.layerGroup([
+            tingle1 = L.marker([464, 298], {icon: TingleIcon}).bindPopup('Green 3'),
+            tingle2 = L.marker([428, 670], {icon: TingleIcon}).bindPopup('Green 1'),
+            tingle3 = L.marker([428, 886], {icon: TingleIcon}).bindPopup('Green 2'),
+            tingle4 = L.marker([105, 610], {icon: TingleIcon}).bindPopup('Green 2 or Blue 1'),
+            ]);
+
+
+        var WindCrests = L.layerGroup([
+            wind1 = L.marker([682, 686], {icon: WindIcon}),
+            wind2 = L.marker([638, 865], {icon: WindIcon}),
+            wind3 = L.marker([390, 530], {icon: WindIcon}),
+            wind4 = L.marker([385, 845], {icon: WindIcon}),
+            wind5 = L.marker([85, 818], {icon: WindIcon}),
+            wind6 = L.marker([99, 550], {icon: WindIcon}),
+            wind7 = L.marker([143, 137], {icon: WindIcon}),
+            wind8 = L.marker([675, 133], {icon: WindIcon}),
+            ]);
+
+
+        var Skulls = L.layerGroup([
+            skull1 = L.marker([101, 858], {icon: SkullIcon}).bindPopup('Deepwood Shrine'),
+            skull2 = L.marker([707, 122], {icon: SkullIcon}).bindPopup('Cave of Flames'),
+            skull3 = L.marker([126, 222], {icon: SkullIcon}).bindPopup('Fortress of Winds'),
+            skull4 = L.marker([394, 878], {icon: SkullIcon}).bindPopup('Temple of Droplets'),
+            skull5 = L.marker([659, 866], {icon: SkullIcon}).bindPopup('Palace of Winds'),
+            skull6 = L.marker([735, 498], {icon: SkullIcon}).bindPopup('Dark Hyrule Castle'),
+            ]);
+
+    </script>
+
+   
+    <script>
+            
+    //Defines Variable for First Option
+    //"TITLE OF LAYER HERE"
+        var BottleLayer = {"Bottles": Bottles};
+            
+    //Adds Layer Option to Map and Defines First Option
+    layerControl = L.control.layers(null,BottleLayer).addTo(map);
+
+    layerControl.addOverlay(Butterflies, 'Butterflies');
+    layerControl.addOverlay(GoldMonsters, 'Golden Monsters');
+    layerControl.addOverlay(Hearts, 'Heart Pieces');
+    layerControl.addOverlay(Kinstones, 'Kinstone Fusions');
+    layerControl.addOverlay(Portals, 'Minish Portals');
+    layerControl.addOverlay(SwordSkills, 'Blade Brothers');
+    layerControl.addOverlay(Swords, 'Equipment');
+    layerControl.addOverlay(Tingles, 'Tingle Brothers');
+    layerControl.addOverlay(WindCrests, 'Wind Crests');
+    layerControl.addOverlay(Skulls, 'Dungeons');
+
+    </script>
+    
+</body>
+</html>
