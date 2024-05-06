@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oracle of Seasons Map</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+
+    <style>
+        #map{
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id='map'></div>
+    
+    
+    <script>
+    
+    
+    //Generate Map and Coordinate System
+        const map = L.map('map', {
+            crs: L.CRS.Simple
+        });
+
+    //Set Bounds of the Map and Generate it
+    //Make the bounds of the map the pixel dimensions in (y,x), scale up/down if needed
+        const bounds = [[0, 0], [535,1187]];
+        //Replace LINK with Image Link
+        const image = L.imageOverlay('https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/OOA%20map.png?raw=true', bounds).addTo(map);
+        map.fitBounds(bounds);
+
+    </script>
+
+    
+    <script>
+ 
+
+
+    //Define Marker Icons
+    //Replace LINK with Image Link Each Time
+        var DungeonIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Oracle%20Dungeon.png?raw=true',
+        iconSize: [25,30], // size of the icon
+        });
+
+        var SwordIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Oracle%20Equipment.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var HeartIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Oracle%20Heart%20Piece.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var RingIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Oracle%20Ring.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var TreeIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Oracle%20Tree.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var SeedIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Oracle%20Seed.png?raw=true',
+        iconSize: [20,30], // size of the icon
+        });
+
+       
+    </script>
+
+    
+    <script>
+
+    //Add Markers to a Group
+    //.bindPopup('TEXT GOES HERE') after yellow ) for Text Popup
+    //[Coordinates of Icon in y,x]
+        var Dungeons = L.layerGroup([
+            dungeon1 = L.marker([278, 550], {icon: DungeonIcon}).bindPopup("Spirit's Grave"),
+            dungeon2 = L.marker([183, 772], {icon: DungeonIcon}).bindPopup('Wing Dungeon'),
+            dungeon3 = L.marker([74, 421], {icon: DungeonIcon}).bindPopup('Moonlit Grotto'),
+            dungeon4 = L.marker([434, 139], {icon: DungeonIcon}).bindPopup('Skull Dungeon'),
+            dungeon5 = L.marker([442, 429], {icon: DungeonIcon}).bindPopup('Crown Dungeon'),
+            dungeon6 = L.marker([339, 1128], {icon: DungeonIcon}).bindPopup("Mermaid's Cave"),
+            dungeon7 = L.marker([131, 13], {icon: DungeonIcon}).bindPopup("Jabu-Jabu's Belly"),
+            dungeon8 = L.marker([283, 1130], {icon: DungeonIcon}).bindPopup('Ancient Tomb'),
+            dungeon9 = L.marker([207, 890], {icon: DungeonIcon}).bindPopup('Black Tower'),
+            dungeon10 = L.marker([310, 351], {icon: DungeonIcon}).bindPopup("Hero's Cave (Linked Game)"),
+            ]);
+
+            
+        var Swords = L.layerGroup([
+            sword1 = L.marker([328, 376], {icon: SwordIcon}).bindPopup('Wooden Sword'),
+            sword2 = L.marker([383, 771], {icon: SwordIcon}).bindPopup('Noble Sword'),
+            sword3 = L.marker([246, 350], {icon: SwordIcon}).bindPopup("Wooden Shield and Dimitri's Flute"),
+            sword4 = L.marker([15, 1025], {icon: SwordIcon}).bindPopup('Iron Shield'),
+            sword5 = L.marker([183, 546], {icon: SwordIcon}).bindPopup('Power Bracelet'),
+            sword6 = L.marker([282, 1131], {icon: SwordIcon}).bindPopup('Power Glove'),
+            sword7 = L.marker([183, 773], {icon: SwordIcon}).bindPopup("Roc's Feather"),
+            sword8 = L.marker([75, 422], {icon: SwordIcon}).bindPopup('Seed Shooter'),
+            sword9 = L.marker([443, 705], {icon: SwordIcon}).bindPopup('Tune of Currents'),
+            sword10 = L.marker([325, 340], {icon: SwordIcon}).bindPopup("Tune of Time (After Ambi's Palace)"),
+            sword11 = L.marker([332, 340], {icon: SwordIcon}).bindPopup('Seed Satchel'),
+            sword12 = L.marker([342, 413], {icon: SwordIcon}).bindPopup('Harp of Ages'),
+            sword13 = L.marker([391, 891], {icon: SwordIcon}).bindPopup('Bombs'),
+            sword14 = L.marker([206, 891], {icon: SwordIcon}).bindPopup('Shovel'),
+            sword15 = L.marker([219, 148], {icon: SwordIcon}).bindPopup("Moosh's Flute"),
+            sword16 = L.marker([274, 961], {icon: SwordIcon}).bindPopup("Ricky's Flute"),
+            sword17 = L.marker([434, 140], {icon: SwordIcon}).bindPopup('Switch Hook'),
+            sword18 = L.marker([131, 13], {icon: SwordIcon}).bindPopup('Long Switch'),
+            sword19 = L.marker([441, 430], {icon: SwordIcon}).bindPopup('Cane of Somaria'),
+            sword20 = L.marker([411, 1165], {icon: SwordIcon}).bindPopup('Boomerang'),
+            sword21 = L.marker([279, 450], {icon: SwordIcon}).bindPopup("Zora's Flippers"),
+            sword22 = L.marker([339, 1129], {icon: SwordIcon}).bindPopup('Mermaid Suit'),
+            sword23 = L.marker([279, 550], {icon: SwordIcon}).bindPopup('Magic Potion'),
+            sword24 = L.marker([270, 342], {icon: SwordIcon}).bindPopup('Ring Box L-1'),
+            sword25 = L.marker([246, 342], {icon: SwordIcon}).bindPopup('Ring Box L-2'),
+            sword26 = L.marker([215, 502], {icon: SwordIcon}).bindPopup('Trading Sequence 1'),
+            sword27 = L.marker([274, 937], {icon: SwordIcon}).bindPopup('Trading Sequence 2'),
+            sword28 = L.marker([270, 837], {icon: SwordIcon}).bindPopup('Trading Sequence 3'),
+            sword29 = L.marker([22, 542], {icon: SwordIcon}).bindPopup('Trading Sequence 4'),
+            sword30 = L.marker([266, 128], {icon: SwordIcon}).bindPopup('Trading Sequence 5'),
+            sword31 = L.marker([234, 257], {icon: SwordIcon}).bindPopup('Trading Sequence 6'),
+            sword32 = L.marker([394, 771], {icon: SwordIcon}).bindPopup('Trading Sequence 7'),
+            sword33 = L.marker([271, 270], {icon: SwordIcon}).bindPopup('Trading Sequence 8'),
+            sword34 = L.marker([298, 841], {icon: SwordIcon}).bindPopup('Trading Sequence 9'),
+            sword35 = L.marker([239, 812], {icon: SwordIcon}).bindPopup('Trading Sequence 10 (Maple)'),
+            sword36 = L.marker([118, 929], {icon: SwordIcon}).bindPopup('Trading Sequence 11'),
+            sword37 = L.marker([275, 1036], {icon: SwordIcon}).bindPopup('Trading Sequence 12'),
+            ]);
+
+
+        var Hearts = L.layerGroup([
+            heart1 = L.marker([183, 901], {icon: HeartIcon}),
+            heart2 = L.marker([310, 957], {icon: HeartIcon}),
+            heart3 = L.marker([178, 449], {icon: HeartIcon}),
+            heart4 = L.marker([155, 676], {icon: HeartIcon}),
+            heart5 = L.marker([302, 784], {icon: HeartIcon}),
+            heart6 = L.marker([395, 57], {icon: HeartIcon}),
+            heart7 = L.marker([246, 341], {icon: HeartIcon}),
+            heart8 = L.marker([415, 337], {icon: HeartIcon}),
+            heart9 = L.marker([435, 549], {icon: HeartIcon}),
+            heart10 = L.marker([69, 422], {icon: HeartIcon}).bindPopup('Underwater'),
+            heart11 = L.marker([239, 812], {icon: HeartIcon}).bindPopup("Maple"),
+            heart12 = L.marker([39, 449], {icon: HeartIcon}).bindPopup('Gasha Trees'),
+            ]);
+
+
+        var Rings = L.layerGroup([
+            ring1 = L.marker([270, 341], {icon: RingIcon}).bindPopup('Friendship Ring'),
+            ring2 = L.marker([183, 546], {icon: RingIcon}).bindPopup('Power Ring L-1 and Discovery Ring'),
+            ring3 = L.marker([19, 1157], {icon: RingIcon}).bindPopup('Power Ring L-2 (Class 3)'),
+            ring4 = L.marker([431, 378], {icon: RingIcon}).bindPopup('Armor Ring L-1'),
+            ring5 = L.marker([239, 1164], {icon: RingIcon}).bindPopup('Blue Ring'),
+            ring6 = L.marker([274, 972], {icon: RingIcon}).bindPopup('GBA Time Ring'),
+            ring7 = L.marker([45, 938], {icon: RingIcon}).bindPopup('Pegasus Ring'),
+            ring8 = L.marker([399, 493], {icon: RingIcon}).bindPopup('Toss Ring (Class 2) and Quicksand Ring (Class 2)'),
+            ring9 = L.marker([339, 498], {icon: RingIcon}).bindPopup('Toss Ring (Class 2)'),
+            ring10 = L.marker([363, 302], {icon: RingIcon}).bindPopup('Light Ring L-1'),
+            ring11 = L.marker([274, 960], {icon: RingIcon}).bindPopup('Light Ring L-2, Red Luck Ring (Class 2), Blue Holy Ring (Class 1) and Octo Ring (Class 1)'),
+            ring12 = L.marker([342, 1180], {icon: RingIcon}).bindPopup("Bomber's Ring and Protection Ring (Class 3)"),
+            ring13 = L.marker([278, 301], {icon: RingIcon}).bindPopup('Green Luck Ring'),
+            ring14 = L.marker([126, 13], {icon: RingIcon}).bindPopup('Blue Luck Ring (Class 1)'),
+            ring15 = L.marker([442, 891], {icon: RingIcon}).bindPopup('Gold Luck Ring'),
+            ring16 = L.marker([439, 1100], {icon: RingIcon}).bindPopup('Red Luck Ring (Class 2)'),
+            ring17 = L.marker([146, 61], {icon: RingIcon}).bindPopup('Green Holy Ring (Class 1)'),
+            ring18 = L.marker([343, 549], {icon: RingIcon}).bindPopup('Green Holy Ring (Class 1) and Bombproof Ring (Class 4)'),
+            ring19 = L.marker([39, 849], {icon: RingIcon}).bindPopup('Red Holy Ring (Class 1)'),
+            ring20 = L.marker([415, 337], {icon: RingIcon}).bindPopup('Gold Joy Ring'),
+            ring21 = L.marker([131, 13], {icon: RingIcon}).bindPopup('Like Like Ring (Class 1)'),
+            ring22 = L.marker([22, 222], {icon: RingIcon}).bindPopup('Whimsical Ring (Class 3)'),
+            ]);
+
+
+        var Trees = L.layerGroup([
+            tree1 = L.marker([279, 836], {icon: TreeIcon}).bindPopup('Class 1-2'),
+            tree2 = L.marker([215, 465], {icon: TreeIcon}).bindPopup('Class 2-4'),
+            tree3 = L.marker([335, 813], {icon: TreeIcon}).bindPopup('Class 2-4'),
+            tree4 = L.marker([147, 836], {icon: TreeIcon}).bindPopup('Class 1-2'),
+            tree5 = L.marker([39, 449], {icon: TreeIcon}).bindPopup('Class 2-4'),
+            tree6 = L.marker([115, 545], {icon: TreeIcon}).bindPopup('Class 2-4'),
+            tree7 = L.marker([46, 1044], {icon: TreeIcon}).bindPopup('Class 3-5'),
+            tree8 = L.marker([438, 226], {icon: TreeIcon}).bindPopup('Class 2-4'),
+            tree9 = L.marker([135, 5], {icon: TreeIcon}).bindPopup('Class 1-2'),
+            tree10 = L.marker([359, 964], {icon: TreeIcon}).bindPopup('Class 1-3'),
+            tree11 = L.marker([423, 1056], {icon: TreeIcon}).bindPopup('Class 1-3'),
+            tree12 = L.marker([371, 497], {icon: TreeIcon}).bindPopup('Class 1-3'),
+            tree13 = L.marker([438, 684], {icon: TreeIcon}).bindPopup('Class 1-2'),
+            tree14 = L.marker([331, 9], {icon: TreeIcon}).bindPopup('Class 1-3'),
+            tree15 = L.marker([18, 636], {icon: TreeIcon}).bindPopup('Class 2-4'),
+            tree16 = L.marker([23, 301], {icon: TreeIcon}).bindPopup('Class 3-5 (Linked Game Only)'),
+            ]);
+
+
+        var Seeds = L.layerGroup([
+            seed1 = L.marker([436, 966], {icon: SeedIcon}).bindPopup('Pegasus'),
+            seed2 = L.marker([363, 1178], {icon: SeedIcon}).bindPopup('Mystery'),
+            seed3 = L.marker([208, 969], {icon: SeedIcon}).bindPopup('Ember'),
+            seed4 = L.marker([367, 854], {icon: SeedIcon}).bindPopup('Scent'),
+            seed5 = L.marker([52, 695], {icon: SeedIcon}).bindPopup('Gale'),
+            seed6 = L.marker([179, 651], {icon: SeedIcon}).bindPopup('Mystery'),
+            seed7 = L.marker([112, 495], {icon: SeedIcon}).bindPopup('Scent'),
+            seed8 = L.marker([208, 339], {icon: SeedIcon}).bindPopup('Ember'),
+            seed9 = L.marker([400, 139], {icon: SeedIcon}).bindPopup('Gale'),
+            seed10 = L.marker([53, 64], {icon: SeedIcon}).bindPopup('Gale'),
+            ]);
+            
+    </script>
+
+   
+    <script>
+    
+    //Defines Variable for First Option
+    //"TITLE OF LAYER HERE"
+        var DungeonLayer = {"Dungeons": Dungeons};
+            
+    //Adds Layer Option to Map and Defines First Option
+    layerControl = L.control.layers(null,DungeonLayer).addTo(map);
+
+    layerControl.addOverlay(Swords, 'Equipment');
+    layerControl.addOverlay(Hearts, 'Heart Pieces');
+    layerControl.addOverlay(Rings, 'Rings');
+    layerControl.addOverlay(Trees, 'Gasha Seeds');
+    layerControl.addOverlay(Seeds, 'Seed Trees');
+
+    </script>
+    
+</body>
+</html>
