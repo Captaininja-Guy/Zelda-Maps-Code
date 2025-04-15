@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ocarina of Time Map</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+
+    <style>
+        #map{
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id='map'></div>
+    
+    <script>
+    
+    
+    //Generate Map and Coordinate System
+        const map = L.map('map', {
+            crs: L.CRS.Simple
+        });
+
+    //Set Bounds of the Map and Generate it
+    //Make the bounds of the map the pixel dimensions in (y,x), scale up/down if needed
+        const bounds = [[0, 0], [582,880]];
+        //Replace LINK with Image Link
+        const image = L.imageOverlay('https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/OOT%20map.png?raw=true', bounds).addTo(map);
+        map.fitBounds(bounds);
+
+    </script>
+
+    <script>
+ 
+
+
+    //Define Marker Icons
+    //Replace LINK with Image Link Each Time
+        var BottleIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Oot%20Bottle.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var GreatFairyIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Oot%20Great%20Fairy.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var MagicBeanIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Oot%20Magic%20Bean.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var MaskIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Oot%20Mask.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var OcarinaIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Oot%20Ocarina.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var HeartIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Oot%20Piece%20of%20Heart.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var StoneIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Oot%20Gossip%20Stone.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var SkultulaIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Oot%20Skultula.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var SwordIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Oot%20Sword.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var TradeIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Oot%20Trade.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var MedalionIconRed = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Oot%20Medalion%201.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var MedalionIconGreen = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Oot%20Medalion%202.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var MedalionIconBlue = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Oot%20Medalion%203.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var MedalionIconPurple = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Oot%20Medalion%204.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var MedalionIconYellow = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Oot%20Medalion%205.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var EmeraldIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Oot%20Emerald.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var RubyIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Oot%20Ruby.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var SaphireIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Oot%20Saphire.png?raw=true',
+        iconSize: [25,25], // size of the icon
+        });
+
+        var BigPoeIcon = L.icon({
+        iconUrl: 'https://github.com/Captaininja-Guy/Zelda-Maps/blob/main/Oot%20Big%20Poe.png?raw=true',
+        iconSize: [25,25], //size of the icon
+        });
+    </script>
+
+    <script>
+
+    //Add Markers to a Group
+    //.bindPopup('TEXT GOES HERE') after yellow ) for Text Popup
+    //[Coordinates of Icon in y,x]
+        var Bottles = L.layerGroup([
+            bottle1 = L.marker([376, 549], {icon: BottleIcon}),
+            bottle2 = L.marker([315, 416], {icon: BottleIcon}),
+            bottle3 = L.marker([117, 389], {icon: BottleIcon}),
+            bottle4 = L.marker([397, 434], {icon: BottleIcon}),
+            ]);
+
+
+        var GreatFairies = L.layerGroup([
+            gfairy1 = L.marker([501, 549], {icon: GreatFairyIcon}).bindPopup('Magic Meter and Spin Attack'),       
+            gfairy2 = L.marker([476, 483], {icon: GreatFairyIcon}).bindPopup("Din's Fire"),
+            gfairy3 = L.marker([478, 847], {icon: GreatFairyIcon}).bindPopup("Farore's Wind"),
+            gfairy4 = L.marker([524, 550], {icon: GreatFairyIcon}).bindPopup('Magic Meter Upgrade'),
+            gfairy5 = L.marker([470, 50], {icon: GreatFairyIcon}).bindPopup("Nayru's Love"),
+            gfairy6 = L.marker([494, 408], {icon: GreatFairyIcon}).bindPopup('Defence Upgrade'),
+            ]);
+
+
+        var MagicBeans = L.layerGroup([
+            bean1 = L.marker([400, 696], {icon: MagicBeanIcon}),
+            bean2 = L.marker([387, 628], {icon: MagicBeanIcon}),
+            bean3 = L.marker([291, 601], {icon: MagicBeanIcon}),
+            bean4 = L.marker([306, 529], {icon: MagicBeanIcon}),
+            bean5 = L.marker([346, 594], {icon: MagicBeanIcon}),
+            bean6 = L.marker([463, 534], {icon: MagicBeanIcon}),
+            bean7 = L.marker([129, 359], {icon: MagicBeanIcon}),
+            bean8 = L.marker([315, 276], {icon: MagicBeanIcon}),
+            bean9 = L.marker([542, 570], {icon: MagicBeanIcon}),
+            bean10 = L.marker([454, 17], {icon: MagicBeanIcon}),
+            ]);
+
+
+        var Masks = L.layerGroup([
+            mask1 = L.marker([417, 541], {icon: MaskIcon}).bindPopup('Keaton Mask'),
+            mask2 = L.marker([317, 548], {icon: MaskIcon}).bindPopup('Skull Mask'),
+            mask3 = L.marker([381, 631], {icon: MaskIcon}).bindPopup('Spooky Mask'),
+            mask4 = L.marker([336, 401], {icon: MaskIcon}).bindPopup('Bunny Hood (Around Lon Lon Ranch)'),
+            ]);
+
+
+        var Songs = L.layerGroup([
+            ocarina1 = L.marker([513, 451], {icon: OcarinaIcon}).bindPopup("Zelda's Lullaby"),
+            ocarina2 = L.marker([311, 403], {icon: OcarinaIcon}).bindPopup("Epona's Song"),
+            ocarina3 = L.marker([402, 605], {icon: OcarinaIcon}).bindPopup("Saria's Song"),
+            ocarina4 = L.marker([382, 641], {icon: OcarinaIcon}).bindPopup("Sun's Song"),
+            ocarina5 = L.marker([386, 439], {icon: OcarinaIcon}).bindPopup('Song of Time'),
+            ocarina6 = L.marker([391, 560], {icon: OcarinaIcon}).bindPopup('Song of Storms'),
+            ocarina7 = L.marker([396, 602], {icon: OcarinaIcon}).bindPopup('Minuet of the Forest'),
+            ocarina8 = L.marker([545, 554], {icon: OcarinaIcon}).bindPopup('Bolero of Fire'),
+            ocarina9 = L.marker([524, 841], {icon: OcarinaIcon}).bindPopup('Serenade of Water'),
+            ocarina10 = L.marker([382, 501], {icon: OcarinaIcon}).bindPopup('Nocturne of Shadow'),
+            ocarina11 = L.marker([456, 16], {icon: OcarinaIcon}).bindPopup('Requiem of Spirit'),
+            ocarina12 = L.marker([446, 488], {icon: OcarinaIcon}).bindPopup('Prelude of Light'),
+            ocarina13 = L.marker([142, 406], {icon: OcarinaIcon}).bindPopup("Scarecrow's Song"),
+            ]);
+            
+
+        var Hearts = L.layerGroup([
+            heart1 = L.marker([381, 636], {icon: HeartIcon}),
+            heart2 = L.marker([379, 630], {icon: HeartIcon}),
+            heart3 = L.marker([309, 391], {icon: HeartIcon}),
+            heart4 = L.marker([355, 281], {icon: HeartIcon}),
+            heart5 = L.marker([297, 274], {icon: HeartIcon}),
+            heart6 = L.marker([123, 432], {icon: HeartIcon}),
+            heart7 = L.marker([316, 602], {icon: HeartIcon}),
+            heart8 = L.marker([317, 548], {icon: HeartIcon}),
+            heart9 = L.marker([411, 410], {icon: HeartIcon}),
+            heart10 = L.marker([504, 533], {icon: HeartIcon}),
+            heart11 = L.marker([521, 572], {icon: HeartIcon}),
+            heart12 = L.marker([372, 545], {icon: HeartIcon}),
+            heart13 = L.marker([424, 423], {icon: HeartIcon}),
+            heart14 = L.marker([233, 386], {icon: HeartIcon}),
+            heart15 = L.marker([420, 720], {icon: HeartIcon}),
+            heart16 = L.marker([430, 786], {icon: HeartIcon}),
+            heart17 = L.marker([437, 825], {icon: HeartIcon}),
+            heart18 = L.marker([387, 624], {icon: HeartIcon}),
+            heart19 = L.marker([391, 559], {icon: HeartIcon}),
+            heart20 = L.marker([388, 629], {icon: HeartIcon}),
+            heart21 = L.marker([398, 547], {icon: HeartIcon}),
+            heart22 = L.marker([384, 537], {icon: HeartIcon}),
+            heart23 = L.marker([127, 354], {icon: HeartIcon}).bindPopup('x2'),
+            heart24 = L.marker([354, 385], {icon: HeartIcon}),
+            heart25 = L.marker([465,536], {icon: HeartIcon}),
+            heart26 = L.marker([537,561], {icon: HeartIcon}),
+            heart27 = L.marker([505, 852], {icon: HeartIcon}).bindPopup('On ice'),
+            heart28 = L.marker([524, 841], {icon: HeartIcon}),
+            heart29 = L.marker([506, 841], {icon: HeartIcon}),
+            heart30 = L.marker([426, 725], {icon: HeartIcon}).bindPopup('x2'),
+            heart31 = L.marker([409, 428], {icon: HeartIcon}),
+            heart32 = L.marker([400, 212], {icon: HeartIcon}),
+            heart33 = L.marker([366, 257], {icon: HeartIcon}),
+            heart34 = L.marker([457, 26], {icon: HeartIcon}),
+            ]);
+            
+            
+        var GossipStones = L.layerGroup([
+            stone1 = L.marker([307, 569], {icon: StoneIcon}).bindPopup('They say that the small holes in the ground that you can find all over Hyrule make perfect breeding ground for bugs.'),
+            stone2 = L.marker([304, 673], {icon: StoneIcon}).bindPopup('They say that one Kokiri has left the forest, but he is still alive!'),    
+            stone3 = L.marker([333, 649], {icon: StoneIcon}).bindPopup('They say that the Kokiri are always followed by small fairies.'),
+            stone4 = L.marker([291, 543], {icon: StoneIcon}).bindPopup('They say that when non-fairy folk enter the Lost Woods, they become monsters!'),
+            stone5 = L.marker([379, 604], {icon: StoneIcon}).bindPopup('They say that the owl named Kaepora Gaebora is the reincarnation of an ancient Sage.'),
+            stone6 = L.marker([391, 594], {icon: StoneIcon}).bindPopup('They say that strange owl, Kaepora Gaebora, may look big and heavy, but its character is rather lighthearted.'),
+            stone7 = L.marker([443, 595], {icon: StoneIcon}).bindPopup("They say that it's possible to find a total of 100 Gold Skulltulas throughout Hyrule."),
+            stone8 = L.marker([442, 480], {icon: StoneIcon}).bindPopup('They say that Malon set the original record in the obstacle course of Lon Lon Ranch.'),
+            stone9 = L.marker([439, 480], {icon: StoneIcon}).bindPopup('They say that Malon of Lon Lon Ranch hopes a knight in shining armor will come and sweep her off her feet someday.'),
+            stone10 = L.marker([437, 480], {icon: StoneIcon}).bindPopup('They say that it is against the rules to use glasses at the Treasure Chest Shop in Hyrule Castle Town Market.'),
+            stone11 = L.marker([434, 480], {icon: StoneIcon}).bindPopup('They say that Gerudo sometimes come to Hyrule Castle Town to look for boyfriends.'),
+            stone12 = L.marker([464, 446], {icon: StoneIcon}).bindPopup('They say that if you get close to a butterfly while holding a Deku Stick in your hands, something good will happen.'),
+            stone13 = L.marker([466, 536], {icon: StoneIcon}).bindPopup('They say that Gerudos worship Ganondorf almost like a god.'),
+            stone14 = L.marker([517, 519], {icon: StoneIcon}).bindPopup('They say that there is a secret around the entrance to Gerudo Valley.'),  
+            stone15 = L.marker([490, 525], {icon: StoneIcon}).bindPopup('They say that Ganondorf is not satisfied with ruling only the Gerudo and aims to conquer all of Hyrule!'),
+            stone16 = L.marker([496, 550], {icon: StoneIcon}).bindPopup("They say that Biggoron's Sword is super sharp and will never break."),    
+            stone17 = L.marker([514, 592], {icon: StoneIcon}).bindPopup("They say that Medigoron didn't really think about his own size, so his store is really cramped."),
+            stone18 = L.marker([418, 729], {icon: StoneIcon}).bindPopup('They say that there is a man who can always be found running around in Hyrule Field.'),
+            stone19 = L.marker([427, 796], {icon: StoneIcon}).bindPopup("They say that Princess Zelda's nanny is actually one of the Sheikah, who many thought had died out."),
+            stone20 = L.marker([450, 840], {icon: StoneIcon}).bindPopup('N64- They say that players who select the "HOLD" option for "Z TARGETING" are the real "Zelda players!" 3DS- They say that setting L-TARGETING to Switch makes it easier when you'+"'re facing many enemies at once."),      
+            stone21 = L.marker([482, 849], {icon: StoneIcon}).bindPopup('They say that you can swim faster by continuously pressing (B).'),        
+            stone22 = L.marker([516, 831], {icon: StoneIcon}).bindPopup('They say that there is a secret near the lone tree which is not far from the river in the northwest part of Hyrule Field.'),
+            stone23 = L.marker([128, 334], {icon: StoneIcon}).bindPopup('They say that there is a secret on the road that leads to Lake Hylia.'),  
+            stone24 = L.marker([45, 339], {icon: StoneIcon}).bindPopup('They say that Ruto, the Zora Princess who is known for her selfish nature, likes a certain boy...'),
+            stone25 = L.marker([37, 441], {icon: StoneIcon}).bindPopup('They say that the Chicken Lady goes to the Lakeside Laboratory to study how to breed pocket- sized Cuccos.'),
+            stone26 = L.marker([309, 345], {icon: StoneIcon}).bindPopup('N64- They say that there is a switch that you can activate only by using the Spin Attack. 3DS- They say that you can activate some switches by using the Spin Attack.'),
+            stone27 = L.marker([351, 273], {icon: StoneIcon}).bindPopup('They say that the thief named Nabooru, who haunts this area, is a Gerudo.'),
+            stone28 = L.marker([496, 428], {icon: StoneIcon}).bindPopup('They say that, contrary to her elegant image, Princess Zelda of Hyrule Castle is, in fact, a tomboy!'),
+            stone29 = L.marker([502, 455], {icon: StoneIcon}).bindPopup('They say that you may find something new in dungeons that you have already finished.'),
+            stone30 = L.marker([384, 645], {icon: StoneIcon}).bindPopup('They say that there is a secret near a tree in Kakariko Village.'),       
+            stone31 = L.marker([445, 15], {icon: StoneIcon}).bindPopup("They say that the treasure you can earn in the Gerudo's Training Ground is not as great as you would expect, given its difficulty!"),
+            ]);
+
+            
+        var BigPoes = L.layerGroup([
+            bigpoe1 = L.marker([359, 442], {icon: BigPoeIcon}),
+            bigpoe2 = L.marker([322, 418], {icon: BigPoeIcon}),
+            bigpoe3 = L.marker([369, 381], {icon: BigPoeIcon}),
+            bigpoe4 = L.marker([314, 370], {icon: BigPoeIcon}),
+            bigpoe5 = L.marker([279, 368], {icon: BigPoeIcon}),
+            bigpoe6 = L.marker([258, 435], {icon: BigPoeIcon}),
+            bigpoe7 = L.marker([246, 438], {icon: BigPoeIcon}),
+            bigpoe8 = L.marker([294, 449], {icon: BigPoeIcon}),
+            bigpoe9 = L.marker([313, 457], {icon: BigPoeIcon}),
+            bigpoe10 = L.marker([363, 484], {icon: BigPoeIcon}),
+            ]);
+
+
+        var Spiders = L.layerGroup([
+
+            Spiders1 = L.layerGroup([
+            skultula1 = L.marker([304, 649], {icon: SkultulaIcon}).bindPopup('x4 in the Great Deku Tree'),
+            skultula2 = L.marker([396, 440], {icon: SkultulaIcon}),
+            skultula3 = L.marker([468, 438], {icon: SkultulaIcon}),
+            skultula4 = L.marker([388, 630], {icon: SkultulaIcon}),
+            skultula5 = L.marker([413, 536], {icon: SkultulaIcon}),
+            skultula6 = L.marker([-1218, 541], {icon: SkultulaIcon}),
+            skultula7 = L.marker([392, 530], {icon: SkultulaIcon}),
+            skultula8 = L.marker([381, 534], {icon: SkultulaIcon}),
+            skultula9 = L.marker([383, 546], {icon: SkultulaIcon}),
+            skultula10 = L.marker([312, 413], {icon: SkultulaIcon}),
+            ]),
+
+            Spiders2 = L.layerGroup([
+            skultula11 = L.marker([303, 403], {icon: SkultulaIcon}),
+            skultula12 = L.marker([322, 304], {icon: SkultulaIcon}),
+            skultula13 = L.marker([312, 273], {icon: SkultulaIcon}),
+            skultula14 = L.marker([128, 360], {icon: SkultulaIcon}),
+            skultula15 = L.marker([57, 422], {icon: SkultulaIcon}),
+            skultula16 = L.marker([278, 557], {icon: SkultulaIcon}),
+            skultula17 = L.marker([307, 543], {icon: SkultulaIcon}),
+            skultula18 = L.marker([346, 600], {icon: SkultulaIcon}),
+            skultula19 = L.marker([295, 600], {icon: SkultulaIcon}),
+            skultula20 = L.marker([464, 537], {icon: SkultulaIcon}),
+            ]),
+
+            Spiders3 = L.layerGroup([
+            skultula21 = L.marker([467, 537], {icon: SkultulaIcon}).bindPopup("x5 in Dogongo's Cavern"),
+            skultula22 = L.marker([439, 533], {icon: SkultulaIcon}),
+            skultula23 = L.marker([517, 522], {icon: SkultulaIcon}),
+            skultula24 = L.marker([508, 557], {icon: SkultulaIcon}),
+            skultula25 = L.marker([384, 677], {icon: SkultulaIcon}),
+            skultula26 = L.marker([428, 791], {icon: SkultulaIcon}),
+            skultula27 = L.marker([482, 846], {icon: SkultulaIcon}),
+            skultula28 = L.marker([505, 831], {icon: SkultulaIcon}).bindPopup("x4 in Jabu Jabu's Belly"),
+            skultula29 = L.marker([482,826], {icon: SkultulaIcon}),
+            skultula30 = L.marker([316, 412], {icon: SkultulaIcon}),
+            ]),
+
+            Spiders4 = L.layerGroup([
+            skultula31 = L.marker([304, 392], {icon: SkultulaIcon}),
+            skultula32 = L.marker([309, 345], {icon: SkultulaIcon}),
+            skultula33 = L.marker([120, 354], {icon: SkultulaIcon}),
+            skultula34 = L.marker([389, 465], {icon: SkultulaIcon}),
+            skultula35 = L.marker([376, 637], {icon: SkultulaIcon}),
+            skultula36 = L.marker([371, 541], {icon: SkultulaIcon}),
+            skultula37 = L.marker([490, 389], {icon: SkultulaIcon}),
+            skultula38 = L.marker([273, 600], {icon: SkultulaIcon}),
+            skultula39 = L.marker([346, 604], {icon: SkultulaIcon}),
+            skultula40 = L.marker([398, 610], {icon: SkultulaIcon}),
+            ]),
+
+            Spiders5 = L.layerGroup([
+            skultula41 = L.marker([457, 601], {icon: SkultulaIcon}).bindPopup('x5 in Forest Temple'),
+            skultula42 = L.marker([504, 533], {icon: SkultulaIcon}),
+            skultula43 = L.marker([541, 570], {icon: SkultulaIcon}),
+            skultula44 = L.marker([566, 572], {icon: SkultulaIcon}).bindPopup('x5 in Fire Temple'),
+            skultula45 = L.marker([491, 550], {icon: SkultulaIcon}),
+            skultula46 = L.marker([460, 538], {icon: SkultulaIcon}),
+            skultula47 = L.marker([390, 708], {icon: SkultulaIcon}),
+            skultula48 = L.marker([428, 771], {icon: SkultulaIcon}),
+            skultula49 = L.marker([438, 827], {icon: SkultulaIcon}),
+            skultula50 = L.marker([524, 842], {icon: SkultulaIcon}).bindPopup('x3 in Ice Cavern'),
+            ]),
+
+            Spiders6 = L.layerGroup([
+            skultula51 = L.marker([123, 356], {icon: SkultulaIcon}),
+            skultula52 = L.marker([68, 391], {icon: SkultulaIcon}).bindPopup('x5 in Water Temple'),
+            skultula53 = L.marker([54, 394], {icon: SkultulaIcon}),
+            skultula54 = L.marker([501, 455], {icon: SkultulaIcon}),
+            skultula55 = L.marker([389.5, 552.5], {icon: SkultulaIcon}).bindPopup('x3 in the Bottom of the Well'),
+            skultula56 = L.marker([383, 661], {icon: SkultulaIcon}).bindPopup('x5 in Shadow Temple'),
+            skultula57 = L.marker([333, 265], {icon: SkultulaIcon}),
+            skultula58 = L.marker([312, 262], {icon: SkultulaIcon}),
+            skultula59 = L.marker([392, 221], {icon: SkultulaIcon}),
+            skultula60 = L.marker([434, 249], {icon: SkultulaIcon}),
+            ]),
+
+            Spiders7 = L.layerGroup([
+            skultula61 = L.marker([438, 117], {icon: SkultulaIcon}),
+            skultula62 = L.marker([452, 16], {icon: SkultulaIcon}),
+            skultula63 = L.marker([460, 45], {icon: SkultulaIcon}),
+            skultula64 = L.marker([438, 35], {icon: SkultulaIcon}),
+            skultula65 = L.marker([457, 14], {icon: SkultulaIcon}).bindPopup('x5 in Spirit Temple'),
+            skultula66 = L.marker([489, 853], {icon: SkultulaIcon}),
+            ]),
+            ]);
+
+
+        var Swords = L.layerGroup([
+            sword1 = L.marker([305, 650], {icon: SwordIcon}).bindPopup('Slingshot'),
+            sword2 = L.marker([463, 536], {icon: SwordIcon}).bindPopup('Bombs'),
+            sword3 = L.marker([582-170, 410], {icon: SwordIcon}).bindPopup('Bombchu'),
+            sword4 = L.marker([77, 830], {icon: SwordIcon}).bindPopup('Boomerang'),
+            sword5 = L.marker([582-291, 543], {icon: SwordIcon}).bindPopup('Fairy Ocarina'),
+            sword6 = L.marker([582-183, 442], {icon: SwordIcon}).bindPopup('Ocarina of Time'),
+            sword7 = L.marker([582-182, 693], {icon: SwordIcon}).bindPopup('Magic Beans'),
+            sword8 = L.marker([454, 602], {icon: SwordIcon}).bindPopup('Fairy Bow'),
+            sword9 = L.marker([582-525, 394], {icon: SwordIcon}).bindPopup('Fire Arrows'),
+            sword10 = L.marker([582-209, 199], {icon: SwordIcon}).bindPopup('Ice Arrows'),
+            sword11 = L.marker([582-136, 491], {icon: SwordIcon}).bindPopup('Master Sword and Light Arrows'),
+            sword12 = L.marker([582-196, 630], {icon: SwordIcon}).bindPopup('Hookshot'),
+            sword13 = L.marker([70, 389], {icon: SwordIcon}).bindPopup('Longshot'),
+            sword14 = L.marker([561, 572], {icon: SwordIcon}).bindPopup('Megaton Hammer'),
+            sword15 = L.marker([582-192, 552], {icon: SwordIcon}).bindPopup('Lens of Truth'),
+            sword16 = L.marker([582-338, 574], {icon: SwordIcon}).bindPopup('Kokiri Sword'),
+            sword17 = L.marker([582-289, 597], {icon: SwordIcon}).bindPopup('Deku Shield'),
+            sword18 = L.marker([582-163, 461], {icon: SwordIcon}).bindPopup('Hylian Shield'),
+            sword19 = L.marker([567, 125], {icon: SwordIcon}).bindPopup('Mirror Shield and Silver Gauntlets'),
+            sword20 = L.marker([582-79, 528], {icon: SwordIcon}).bindPopup('Goron Tunic'),
+            sword21 = L.marker([582-135, 840], {icon: SwordIcon}).bindPopup('Zora Tunic'),
+            sword22 = L.marker([582-59, 840], {icon: SwordIcon}).bindPopup('Iron Boots'),
+            sword23 = L.marker([383, 658], {icon: SwordIcon}).bindPopup('Hover Boots'),
+            sword24 = L.marker([582-262, 603], {icon: SwordIcon}).bindPopup('Deku Seed Bullet Bag Upgrade'),
+            sword25 = L.marker([582-141, 432], {icon: SwordIcon}).bindPopup('Deku Seed Bullet Bag Upgrade'),
+            sword26 = L.marker([582-216, 258], {icon: SwordIcon}).bindPopup('Quiver Upgrade'),
+            sword27 = L.marker([582-198, 545], {icon: SwordIcon}).bindPopup('Quiver Upgrade'),
+            sword28 = L.marker([582-64, 533], {icon: SwordIcon}).bindPopup("Goron's Bracelet"),
+            sword29 = L.marker([582-80, 371], {icon: SwordIcon}).bindPopup('Golden Gauntlets'),
+            sword30 = L.marker([582-156, 424], {icon: SwordIcon}).bindPopup('Bomb Bag Upgrade'),
+            sword31 = L.marker([582-81, 537], {icon: SwordIcon}).bindPopup('Bomb Bag Upgrade'),
+            sword32 = L.marker([582-143, 825], {icon: SwordIcon}).bindPopup('Silver Scale'),
+            sword33 = L.marker([582-459, 432], {icon: SwordIcon}).bindPopup('Golden Scale'),
+            sword34 = L.marker([582-199, 537], {icon: SwordIcon}).bindPopup("Adult's and Giant's Wallet and Stone/Shard of Agony"),
+            ]);
+    
+
+        var Trades = L.layerGroup([
+            trade1 = L.marker([377, 549], {icon: TradeIcon}).bindPopup('1 Pocket Egg and 3 Cojiro'),
+            trade2 = L.marker([398, 542], {icon: TradeIcon}).bindPopup('2 Pocket Cucco'),
+            trade3 = L.marker([319, 543], {icon: TradeIcon}).bindPopup('4 Odd Mushroom and 6 Poachers Saw'),
+            trade4 = L.marker([407, 546], {icon: TradeIcon}).bindPopup('5 Odd Poultice'),
+            trade5 = L.marker([326,270], {icon: TradeIcon}).bindPopup("7 Broken Goron's Sword"),
+            trade6 = L.marker([500, 556], {icon: TradeIcon}).bindPopup("8 Prescription and 11 Clain Check/Biggoron's Sword"),
+            trade7 = L.marker([447, 840], {icon: TradeIcon}).bindPopup('9 Eyeball Frog'),
+            trade8 = L.marker([125, 362], {icon: TradeIcon}).bindPopup("10 World's Finest Eye Drops")
+            ]);
+
+            
+        var Dungeons = L.layerGroup([
+            dungeon1 = L.marker([305, 650], {icon: EmeraldIcon}).bindPopup('Deku Tree'),
+            dungeon2 = L.marker([463, 536], {icon: RubyIcon}).bindPopup("Dodongo's Covern"),
+            dungeon3 = L.marker([77, 830], {icon: SaphireIcon}).bindPopup("Jabu Jabu's Belly"),
+            dungeon1a = L.marker([454, 602], {icon: MedalionIconGreen}).bindPopup('Forest Temple'),
+            dungeon2a = L.marker([561, 572], {icon: MedalionIconRed}).bindPopup('Fire Temple'),
+            dungeon3a = L.marker([70, 389], {icon: MedalionIconBlue}).bindPopup('Water Temple'),
+            dungeon4a = L.marker([383, 658], {icon: MedalionIconPurple}).bindPopup('Shadow Temple'),
+            dungeon5a = L.marker([567, 125], {icon: MedalionIconYellow}).bindPopup('Spirit Temple'),
+            ]);
+
+    </script>
+    
+    <script>
+    //Defines Variable for First Option
+    //"TITLE OF LAYER HERE"
+        var BottleLayer = {"Bottles": Bottles};
+            
+    //Adds Layer Option to Map and Defines First Option
+    layerControl = L.control.layers(null,BottleLayer).addTo(map);
+
+    layerControl.addOverlay(GreatFairies, 'Great Fairies');
+    layerControl.addOverlay(MagicBeans, 'Magic Beans');
+    layerControl.addOverlay(Masks, 'Masks');
+    layerControl.addOverlay(Songs, 'Songs');
+    layerControl.addOverlay(Hearts, 'Pieces of Heart');
+    layerControl.addOverlay(GossipStones, 'Gossip Stones');
+    layerControl.addOverlay(Spiders, 'Gold Skultulas');
+    layerControl.addOverlay(Swords, 'Equipment');
+    layerControl.addOverlay(Trades, 'Trading Sequence');
+    layerControl.addOverlay(Dungeons, 'Dungeons');
+    layerControl.addOverlay(BigPoes, 'Big Poes')
+
+    </script>
+    
+</body>
+</html>
